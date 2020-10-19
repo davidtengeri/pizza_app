@@ -32,15 +32,20 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
     return Navigator(
       key: navigatorKey,
       pages: [
+        // A HomePage mindig szereplni fog az oldalak között.
         MaterialPage(
           key: ValueKey('HomePage'),
           child: HomePage(
             onPizzaSelect: _handleAddToCart,
           ),
         ),
+        // Ha ismeretlen oldalra tévedtünk, akkor az Unknown widget
+        // fog megjelenni
         if (show404)
           MaterialPage(key: ValueKey('UnknownPage'), child: Unknown())
         else if (_selectedPizza != null)
+          // Egyébként a rendelési oldalon vagyunk, és az URL alapján a rendszer
+          // beazonosította, hogy melyik pizzát kell megjeleníteni.
           MaterialPage(
             key: ObjectKey(_selectedPizza),
             child: PizzaDetails(
@@ -48,6 +53,9 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
             ),
           ),
       ],
+      // Akkor fut le, amikor kikerül egy elem a stack-ből.
+      // Jelen esetben ez azt jelenti, hogy elhagytuk a PizzaDetails widget-et,
+      // így nincs kiválasztott pizzánk
       onPopPage: (route, result) {
         if (!route.didPop(result)) {
           return false;
@@ -55,6 +63,9 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
 
         _selectedPizza = null;
         show404 = false;
+        // A notifyListener meghívásával jelezhetjük a Router felé,
+        // hogy változott a navigációs állapot és frissítenie kell
+        // a megjelenítést
         notifyListeners();
 
         return true;
