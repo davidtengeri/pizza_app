@@ -3,7 +3,13 @@ import 'package:pizza_app/screens/home/featured.dart';
 import 'package:pizza_app/models/pizza.dart';
 import 'package:pizza_app/screens/home/today_specials.dart';
 
+typedef OnPizzaSelect = void Function(Pizza pizza);
+
 class HomePage extends StatelessWidget {
+  final OnPizzaSelect onPizzaSelect;
+
+  const HomePage({Key key, this.onPizzaSelect}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -22,10 +28,13 @@ class HomePage extends StatelessWidget {
             children: [
               Featured(
                 pizza: PIZZAS.last,
+                onPizzaSelect: onPizzaSelect,
               ),
               // Az Expanded widget kitölti a maradék rendelkezésre álló helyet.
               Expanded(
-                child: TodaySpecials(),
+                child: TodaySpecials(
+                  onPizzaSelect: onPizzaSelect,
+                ),
               ),
             ],
           ),

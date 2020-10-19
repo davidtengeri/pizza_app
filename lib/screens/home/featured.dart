@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:pizza_app/models/pizza.dart';
+import 'package:pizza_app/screens/home_page.dart';
 
 import '../home/pizza_card.dart';
 
 class Featured extends StatelessWidget {
   final Pizza pizza;
+  final OnPizzaSelect onPizzaSelect;
 
-  const Featured({Key key, this.pizza}) : super(key: key);
+  const Featured({Key key, this.pizza, this.onPizzaSelect}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,6 +54,7 @@ class Featured extends StatelessWidget {
             bottom: 50,
             child: PizzaCard(
               pizza: pizza,
+              onPizzaSelect: onPizzaSelect,
             ),
           ),
           Positioned(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_app/screens/home_page.dart';
-import 'package:pizza_app/screens/pizza_details.dart';
+import 'package:pizza_app/navigation/pizza_route_information_parser.dart';
+import 'package:pizza_app/navigation/pizza_router_delegate.dart';
 
 main(List<String> args) {
   runApp(App());
@@ -9,12 +9,9 @@ main(List<String> args) {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: '/',
-      routes: {
-        '/': (context) => HomePage(),
-        '/details': (context) => PizzaDetails(),
-      },
+    return MaterialApp.router(
+      routeInformationParser: PizzaRouteInformationParser(),
+      routerDelegate: PizzaRouterDelegate(),
     );
   }
 }

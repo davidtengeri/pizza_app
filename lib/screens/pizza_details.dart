@@ -13,13 +13,15 @@ import 'package:pizza_app/models/pizza.dart';
 import 'package:pizza_app/components/rating.dart';
 
 class PizzaDetails extends StatelessWidget {
+  final Pizza pizza;
+
   const PizzaDetails({
     Key key,
+    this.pizza,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final Pizza pizza = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,

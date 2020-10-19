@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_app/models/pizza.dart';
 import 'package:pizza_app/screens/home/pizza_card.dart';
+import 'package:pizza_app/screens/home_page.dart';
 
 class TodaySpecials extends StatelessWidget {
+  final OnPizzaSelect onPizzaSelect;
+
+  const TodaySpecials({Key key, this.onPizzaSelect}) : super(key: key);
   // Ez a metódus a lista elemeit építi fel. Az elemek a PIZZAS listában
   // találhatók.
   Widget _buildItem(BuildContext context, int index) {
@@ -22,6 +26,7 @@ class TodaySpecials extends StatelessWidget {
               child: PizzaCard(
                 pizza: PIZZAS[index],
                 padding: EdgeInsets.only(left: 60),
+                onPizzaSelect: onPizzaSelect,
               ),
             ),
           ),

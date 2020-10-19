@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_app/components/rating.dart';
-import 'package:pizza_app/screens/pizza_details.dart';
-
-import '../../models/pizza.dart';
+import 'package:pizza_app/models/pizza.dart';
+import 'package:pizza_app/screens/home_page.dart';
 
 class PizzaCard extends StatelessWidget {
   final Pizza pizza;
   final EdgeInsetsGeometry padding;
+  final OnPizzaSelect onPizzaSelect;
 
-  const PizzaCard({Key key, this.pizza, this.padding}) : super(key: key);
+  const PizzaCard({
+    Key key,
+    this.pizza,
+    this.padding,
+    this.onPizzaSelect,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -86,11 +91,7 @@ class PizzaCard extends StatelessWidget {
           ),
           RaisedButton(
             onPressed: () {
-              Navigator.pushNamed(
-                context,
-                '/details',
-                arguments: pizza,
-              );
+              onPizzaSelect(pizza);
             },
             child: Text(
               'Add to cart',
