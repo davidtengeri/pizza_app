@@ -76,6 +76,9 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
   @override
   GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
 
+  // Akkor fut le ha a rendszer szól az alkalmazásunknak, hogy egy új
+  // útvonalat kell megjeleníteni, például, ha kézzel beírok egy URL-t a
+  // böngészőbe.
   @override
   Future<void> setNewRoutePath(PizzaRoutePath path) async {
     if (path.isUnknown) {
