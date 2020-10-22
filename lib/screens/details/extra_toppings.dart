@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_app/components/text_toggle_buttons.dart';
 
+typedef OnToppingChange = void Function(String topping);
+
 class ExtraToppings extends StatelessWidget {
+  final options = [
+    'Standard',
+    'Extra Cheese',
+    'Extra Spice',
+  ];
+  final String topping;
+  final OnToppingChange onToppingChange;
+
+  ExtraToppings({Key key, this.topping, this.onToppingChange})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,17 +30,15 @@ class ExtraToppings extends StatelessWidget {
             textAlign: TextAlign.left,
           ),
           TextToggleButtons(
-            texts: [
-              'Standard',
-              'Extra Cheese',
-              'Extra Spice',
-            ],
+            texts: options,
             isSelected: [
-              false,
-              true,
-              false,
+              topping == options[0],
+              topping == options[1],
+              topping == options[2],
             ],
-            onPressed: (int index) {},
+            onPressed: (int index) {
+              onToppingChange(options[index]);
+            },
           ),
         ],
       ),

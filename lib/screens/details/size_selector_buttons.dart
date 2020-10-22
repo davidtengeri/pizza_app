@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_app/screens/details/size.dart';
 
 class _SizeSelector extends StatelessWidget {
   final String size;
@@ -32,23 +33,13 @@ class _SizeSelector extends StatelessWidget {
   }
 }
 
-class SizeSelectorButtons extends StatefulWidget {
+class SizeSelectorButtons extends StatelessWidget {
   final Image image;
+  final String size;
+  final OnSizeChange onSizeChange;
 
-  const SizeSelectorButtons({Key key, this.image}) : super(key: key);
-
-  @override
-  _SizeSelectorButtonsState createState() => _SizeSelectorButtonsState();
-}
-
-class _SizeSelectorButtonsState extends State<SizeSelectorButtons> {
-  String selectedSize = 'S';
-
-  void _onSizeChange(String size) {
-    setState(() {
-      selectedSize = size;
-    });
-  }
+  const SizeSelectorButtons({Key key, this.image, this.size, this.onSizeChange})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -78,16 +69,16 @@ class _SizeSelectorButtonsState extends State<SizeSelectorButtons> {
         Container(
           width: 120,
           height: 120,
-          child: widget.image,
+          child: image,
         ),
         Positioned(
           left: 125,
           child: _SizeSelector(
             size: 'S',
             onPressed: () {
-              _onSizeChange('S');
+              onSizeChange('Small');
             },
-            active: selectedSize == 'S',
+            active: size == 'Small',
           ),
         ),
         Positioned(
@@ -96,9 +87,9 @@ class _SizeSelectorButtonsState extends State<SizeSelectorButtons> {
           child: _SizeSelector(
             size: 'M',
             onPressed: () {
-              _onSizeChange('M');
+              onSizeChange('Medium');
             },
-            active: selectedSize == 'M',
+            active: size == 'Medium',
           ),
         ),
         Positioned(
@@ -107,9 +98,9 @@ class _SizeSelectorButtonsState extends State<SizeSelectorButtons> {
           child: _SizeSelector(
             size: 'L',
             onPressed: () {
-              _onSizeChange('L');
+              onSizeChange('Large');
             },
-            active: selectedSize == 'L',
+            active: size == 'Large',
           ),
         ),
       ],

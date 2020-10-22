@@ -10,6 +10,17 @@ class AmountSelector extends StatelessWidget {
     @required this.amountChange,
   }) : super(key: key);
 
+  void decreaseAmount() {
+    var value = amount - 1;
+    if (value >= 0) {
+      amountChange(value);
+    }
+  }
+
+  void increaseAmount() {
+    amountChange(amount + 1);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,9 +40,7 @@ class AmountSelector extends StatelessWidget {
             ),
             child: RaisedButton(
               color: Colors.white,
-              onPressed: () {
-                amountChange(amount - 1);
-              },
+              onPressed: decreaseAmount,
               child: Text(
                 '-',
               ),
@@ -58,9 +67,7 @@ class AmountSelector extends StatelessWidget {
             ),
             child: RaisedButton(
               color: Colors.white,
-              onPressed: () {
-                amountChange(amount + 1);
-              },
+              onPressed: increaseAmount,
               child: Text(
                 '+',
               ),

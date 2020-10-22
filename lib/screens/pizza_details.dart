@@ -2,7 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:pizza_app/components/amount_selector.dart';
+import 'package:pizza_app/components/cart_button.dart';
 import 'package:pizza_app/components/max_width_button.dart';
+import 'package:pizza_app/models/cart.dart';
+import 'package:pizza_app/models/cart_item.dart';
 import 'package:pizza_app/screens/details/crust.dart';
 import 'package:pizza_app/screens/details/extra_toppings.dart';
 import 'package:pizza_app/screens/details/size.dart';
@@ -11,14 +14,62 @@ import 'package:pizza_app/screens/details/topping.dart';
 import 'package:pizza_app/screens/details/total.dart';
 import 'package:pizza_app/models/pizza.dart';
 import 'package:pizza_app/components/rating.dart';
+import 'package:provider/provider.dart';
 
-class PizzaDetails extends StatelessWidget {
+class PizzaDetails extends StatefulWidget {
   final Pizza pizza;
 
   const PizzaDetails({
     Key key,
     this.pizza,
   }) : super(key: key);
+
+  @override
+  _PizzaDetailsState createState() => _PizzaDetailsState();
+}
+
+class _PizzaDetailsState extends State<PizzaDetails> {
+  String _crust = 'Standard';
+  String _size = 'Small';
+  String _topping = 'Standard';
+  int _amount = 1;
+
+  void _changeCrust(String crust) {
+    setState(() {
+      _crust = crust;
+    });
+  }
+
+  void _changeSize(String size) {
+    setState(() {
+      _size = size;
+    });
+  }
+
+  void _changeTopping(String topping) {
+    setState(() {
+      _topping = topping;
+    });
+  }
+
+  void _changeAmount(int amount) {
+    setState(() {
+      _amount = amount;
+    });
+  }
+
+  void _addPizzaToCart() {
+    for (var i = 0; i < _amount; i++) {
+      Provider.of<Cart>(context, listen: false).add(
+        CartItem(
+          pizza: widget.pizza,
+          size: _size,
+          crust: _crust,
+          topping: _topping,
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +83,11 @@ class PizzaDetails extends StatelessWidget {
           'Details',
           style: TextStyle(color: Colors.grey[900]),
         ),
+        actions: [
+          CartButton(
+            iconColor: Colors.black,
+          )
+        ],
       ),
       body: Container(
         padding: EdgeInsets.all(8),
@@ -47,7 +103,9 @@ class PizzaDetails extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0),
                     child: SizeSelectorButtons(
-                      image: Image.asset(pizza.imagePath),
+                      image: Image.asset(widget.pizza.imagePath),
+                      size: _size,
+                      onSizeChange: _changeSize,
                     ),
                   ),
                 ),
@@ -56,18 +114,18 @@ class PizzaDetails extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        pizza.name,
+                        widget.pizza.name,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Rating(
-                        rating: pizza.rating,
+                        rating: widget.pizza.rating,
                       ),
                       AmountSelector(
-                        amount: 1,
-                        amountChange: (int amount) {},
+                        amount: _amount,
+                        amountChange: _changeAmount,
                       ),
                     ],
                   ),
@@ -78,20 +136,29 @@ class PizzaDetails extends StatelessWidget {
                 child: ListView(
               children: [
                 Topping(
-                  topping: pizza.topping,
+                  topping: widget.pizza.topping,
                 ),
-                Size(),
-                Crust(),
-                ExtraToppings(),
+                Size(
+                  size: _size,
+                  onSizeChange: _changeSize,
+                ),
+                Crust(
+                  crust: _crust,
+                  onCrustSelect: _changeCrust,
+                ),
+                ExtraToppings(
+                  topping: _topping,
+                  onToppingChange: _changeTopping,
+                ),
               ],
             )),
             Total(
-              totalPrice: pizza.price,
+              totalPrice: widget.pizza.price,
             ),
             MaxWidthButton(
               text: 'Add to cart',
               onPressed: () {
-                Navigator.pop(context);
+                _addPizzaToCart();
               },
             ),
           ],

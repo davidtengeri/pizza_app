@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_app/components/cart_button.dart';
 import 'package:pizza_app/screens/home/featured.dart';
 import 'package:pizza_app/models/pizza.dart';
 import 'package:pizza_app/screens/home/today_specials.dart';
@@ -14,6 +15,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.red,
+          title: Text('Pizza App'),
+          actions: [CartButton()],
+        ),
         // A Container egy általános tároló elem, amivel könnyen lehet méretezni,
         // színezni a tartalmát
         body: Container(
