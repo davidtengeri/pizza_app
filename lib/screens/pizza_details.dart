@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pizza_app/components/amount_selector.dart';
 import 'package:pizza_app/components/cart_button.dart';
 import 'package:pizza_app/components/max_width_button.dart';
+import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/models/cart.dart';
 import 'package:pizza_app/models/cart_item.dart';
 import 'package:pizza_app/screens/details/crust.dart';
@@ -29,10 +30,15 @@ class PizzaDetails extends StatefulWidget {
 }
 
 class _PizzaDetailsState extends State<PizzaDetails> {
-  String _crust = 'Standard';
-  String _size = 'Small';
-  String _topping = 'Standard';
+  String _crust;
+  String _size;
+  String _topping;
   int _amount = 1;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   void _changeCrust(String crust) {
     setState(() {
@@ -59,8 +65,9 @@ class _PizzaDetailsState extends State<PizzaDetails> {
   }
 
   void _addPizzaToCart() {
+    var cart = context.read<Cart>();
     for (var i = 0; i < _amount; i++) {
-      Provider.of<Cart>(context, listen: false).add(
+      cart.add(
         CartItem(
           pizza: widget.pizza,
           size: _size,
@@ -80,7 +87,7 @@ class _PizzaDetailsState extends State<PizzaDetails> {
           color: Colors.black,
         ),
         title: Text(
-          'Details',
+          PizzaAppLocalizations.of(context).details,
           style: TextStyle(color: Colors.grey[900]),
         ),
         actions: [
@@ -156,7 +163,7 @@ class _PizzaDetailsState extends State<PizzaDetails> {
               totalPrice: widget.pizza.price,
             ),
             MaxWidthButton(
-              text: 'Add to cart',
+              text: PizzaAppLocalizations.of(context).addToCart,
               onPressed: () {
                 _addPizzaToCart();
               },

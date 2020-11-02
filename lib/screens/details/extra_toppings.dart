@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_app/components/text_toggle_buttons.dart';
+import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 
 typedef OnToppingChange = void Function(String topping);
 
 class ExtraToppings extends StatelessWidget {
   final options = [
-    'Standard',
-    'Extra Cheese',
-    'Extra Spice',
+    'standard',
+    'extraCheese',
+    'extraSpice',
   ];
   final String topping;
   final OnToppingChange onToppingChange;
@@ -23,14 +24,19 @@ class ExtraToppings extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Toppings',
+            PizzaAppLocalizations.of(context).toppings,
             style: TextStyle(
               fontSize: 20,
             ),
             textAlign: TextAlign.left,
           ),
           TextToggleButtons(
-            texts: options,
+            texts: options
+                .map(
+                  (option) =>
+                      PizzaAppLocalizations.of(context).stringById(option),
+                )
+                .toList(),
             isSelected: [
               topping == options[0],
               topping == options[1],

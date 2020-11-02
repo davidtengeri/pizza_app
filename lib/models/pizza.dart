@@ -1,3 +1,5 @@
+import 'package:quiver/core.dart';
+
 // Egyszerű osztály az adatok öszefogására.
 class Pizza {
   final String name;
@@ -13,6 +15,16 @@ class Pizza {
     this.imagePath,
     this.rating,
   });
+
+  bool operator ==(Object other) =>
+      other is Pizza &&
+      other.name == name &&
+      other.topping == topping &&
+      other.price == price &&
+      other.imagePath == imagePath &&
+      other.rating == rating;
+
+  int get hashCode => hashObjects([name, topping, price, imagePath, rating]);
 }
 
 // Pár pizza, amit megjelenítünk

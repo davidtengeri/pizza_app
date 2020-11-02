@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/models/pizza.dart';
 import 'package:pizza_app/screens/home/pizza_card.dart';
 import 'package:pizza_app/screens/home_page.dart';
@@ -51,7 +52,7 @@ class TodaySpecials extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Today Special',
+              PizzaAppLocalizations.of(context).todaySpecials,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,

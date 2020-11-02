@@ -76,9 +76,9 @@ class SizeSelectorButtons extends StatelessWidget {
           child: _SizeSelector(
             size: 'S',
             onPressed: () {
-              onSizeChange('Small');
+              onSizeChange('small');
             },
-            active: size == 'Small',
+            active: size == 'small',
           ),
         ),
         Positioned(
@@ -87,9 +87,9 @@ class SizeSelectorButtons extends StatelessWidget {
           child: _SizeSelector(
             size: 'M',
             onPressed: () {
-              onSizeChange('Medium');
+              onSizeChange('medium');
             },
-            active: size == 'Medium',
+            active: size == 'medium',
           ),
         ),
         Positioned(
@@ -98,9 +98,9 @@ class SizeSelectorButtons extends StatelessWidget {
           child: _SizeSelector(
             size: 'L',
             onPressed: () {
-              onSizeChange('Large');
+              onSizeChange('large');
             },
-            active: size == 'Large',
+            active: size == 'large',
           ),
         ),
       ],

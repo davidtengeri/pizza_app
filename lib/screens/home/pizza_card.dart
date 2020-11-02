@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_app/components/favourite_button.dart';
 import 'package:pizza_app/components/rating.dart';
+import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/models/pizza.dart';
 import 'package:pizza_app/screens/home_page.dart';
 
@@ -48,11 +50,23 @@ class PizzaCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    pizza.name,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          right: 10.0,
+                        ),
+                        child: FavouriteButton(
+                          pizza: pizza,
+                        ),
+                      ),
+                      Text(
+                        pizza.name,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
                   Container(
                     padding: EdgeInsets.only(
@@ -72,7 +86,7 @@ class PizzaCard extends StatelessWidget {
                             left: 10,
                           ),
                           child: Rating(rating: pizza.rating),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -94,7 +108,7 @@ class PizzaCard extends StatelessWidget {
               onPizzaSelect(pizza);
             },
             child: Text(
-              'Add to cart',
+              PizzaAppLocalizations.of(context).addToCart,
             ),
             color: Colors.red,
             textColor: Colors.white,

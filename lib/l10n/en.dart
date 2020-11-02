@@ -1,0 +1,18 @@
+const ENGLISH_TEXTS = {
+  'addToCart': 'Add to cart',
+  'cheeseBurst': 'Cheese Burst',
+  'crust': 'Crust',
+  'details': 'Details',
+  'extraCheese': 'Extra Cheese',
+  'extraSpice': 'Extra Spice',
+  'garlicRoasted': 'Garlic Roasted',
+  'large': 'Large',
+  'medium': 'Medium',
+  'size': 'Size',
+  'small': 'Small',
+  'standard': 'Standard',
+  'todaySpecials': 'Today specials',
+  'toppings': 'Toppings',
+  'total': 'Total',
+  'unknown': 'Unknown',
+};

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 
 class Unknown extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class Unknown extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('Unknown'),
+            Text(PizzaAppLocalizations.of(context).unknown),
           ],
         ),
       ),

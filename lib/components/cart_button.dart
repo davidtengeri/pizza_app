@@ -10,6 +10,9 @@ class CartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var nrOfItemsInCart =
+        context.select<Cart, int>((cart) => cart.items.length);
+
     return ButtonTheme(
       padding: EdgeInsets.all(0),
       child: FlatButton(
@@ -42,7 +45,7 @@ class CartButton extends StatelessWidget {
                   borderType: BorderType.Circle,
                   child: Center(
                     child: Text(
-                      Provider.of<Cart>(context).items.length.toString(),
+                      nrOfItemsInCart.toString(),
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
