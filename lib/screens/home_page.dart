@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_app/components/cart_button.dart';
+import 'package:pizza_app/components/profile_button.dart';
 import 'package:pizza_app/screens/home/featured.dart';
 import 'package:pizza_app/models/pizza.dart';
 import 'package:pizza_app/screens/home/today_specials.dart';
@@ -8,8 +9,13 @@ typedef OnPizzaSelect = void Function(Pizza pizza);
 
 class HomePage extends StatelessWidget {
   final OnPizzaSelect onPizzaSelect;
+  final void Function() onShowProfile;
 
-  const HomePage({Key key, this.onPizzaSelect}) : super(key: key);
+  const HomePage({
+    Key key,
+    this.onPizzaSelect,
+    this.onShowProfile,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +24,12 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.red,
           title: Text('Pizza App'),
-          actions: [CartButton()],
+          actions: [
+            CartButton(),
+            ProfileButton(
+              onPressed: onShowProfile,
+            ),
+          ],
         ),
         // A Container egy általános tároló elem, amivel könnyen lehet méretezni,
         // színezni a tartalmát

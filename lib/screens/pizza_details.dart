@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pizza_app/components/amount_selector.dart';
 import 'package:pizza_app/components/cart_button.dart';
 import 'package:pizza_app/components/max_width_button.dart';
+import 'package:pizza_app/components/profile_button.dart';
 import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/models/cart.dart';
 import 'package:pizza_app/models/cart_item.dart';
@@ -19,10 +20,12 @@ import 'package:provider/provider.dart';
 
 class PizzaDetails extends StatefulWidget {
   final Pizza pizza;
+  final void Function() onShowProfile;
 
   const PizzaDetails({
     Key key,
     this.pizza,
+    this.onShowProfile,
   }) : super(key: key);
 
   @override
@@ -93,7 +96,11 @@ class _PizzaDetailsState extends State<PizzaDetails> {
         actions: [
           CartButton(
             iconColor: Colors.black,
-          )
+          ),
+          ProfileButton(
+            iconColor: Colors.black,
+            onPressed: widget.onShowProfile,
+          ),
         ],
       ),
       body: Container(

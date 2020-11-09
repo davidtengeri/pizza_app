@@ -30,18 +30,35 @@ class PizzaAppLocalizations {
   String stringById(String id) => _localizedValues[locale.languageCode][id];
 
   // Az egyes azonosítókhoz metódust rendelünk
+  String get addAddressDialogTitle => stringById('addAddressDialogTitle');
+  String get addresses => stringById('addresses');
+  String get addressSaved => stringById('addressSaved');
   String get addToCart => stringById('addToCart');
+  String get cancel => stringById('cancel');
   String get cheeseBurst => stringById('cheeseBurst');
+  String get city => stringById('city');
   String get crust => stringById('crust');
   String get details => stringById('details');
+  String get email => stringById('email');
+  String get enterYourEmail => stringById('enterYourEmail');
+  String get enterYourName => stringById('enterYourName');
+  String get enterYourPhone => stringById('enterYourPhone');
   String get extraCheese => stringById('extraCheese');
   String get extraSpice => stringById('extraSpice');
   String get garlicRoasted => stringById('garlicRoasted');
+  String get houseNumber => stringById('houseNumber');
   String get large => stringById('large');
+  String get mandatoryField => stringById('mandatoryField');
   String get medium => stringById('medium');
+  String get name => stringById('name');
+  String get phone => stringById('phone');
+  String get profile => stringById('profile');
+  String get profileSaved => stringById('profileSaved');
+  String get save => stringById('save');
   String get size => stringById('size');
   String get small => stringById('small');
   String get standard => stringById('standard');
+  String get street => stringById('street');
   String get todaySpecials => stringById('todaySpecials');
   String get toppings => stringById('toppings');
   String get total => stringById('total');

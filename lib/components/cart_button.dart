@@ -15,6 +15,7 @@ class CartButton extends StatelessWidget {
 
     return ButtonTheme(
       padding: EdgeInsets.all(0),
+      minWidth: 30,
       child: FlatButton(
         onPressed: () {},
         child: Stack(

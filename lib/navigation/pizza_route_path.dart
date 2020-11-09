@@ -2,18 +2,28 @@
 class PizzaRoutePath {
   final int id;
   final bool isUnknown;
+  final bool isProfile;
 
   PizzaRoutePath.home()
       : id = null,
-        isUnknown = false;
+        isUnknown = false,
+        isProfile = false;
 
-  PizzaRoutePath.order(this.id) : isUnknown = false;
+  PizzaRoutePath.order(this.id)
+      : isUnknown = false,
+        isProfile = false;
 
   PizzaRoutePath.unknown()
       : id = null,
-        isUnknown = true;
+        isUnknown = true,
+        isProfile = false;
 
-  bool get isHomePage => id == null;
+  PizzaRoutePath.profile()
+      : id = null,
+        isUnknown = false,
+        isProfile = true;
 
-  bool get isOrderPage => id != null;
+  bool get isHomePage => id == null && !isProfile;
+
+  bool get isOrderPage => id != null && !isProfile;
 }

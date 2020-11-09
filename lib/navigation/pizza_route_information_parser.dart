@@ -16,12 +16,15 @@ class PizzaRouteInformationParser
     // Az :id a kiválasztott pizza indexe lesz a PIZZAS tömbben.
     // Ez később leheg egy adatbázis beli ID, ami alapján betöltjük a megfelelő
     // pizzát az adatbázisból
-    if (uri.pathSegments.length == 2) {
-      if (uri.pathSegments[0] != 'order') return PizzaRoutePath.unknown();
+    if (uri.pathSegments.length == 2 && uri.pathSegments[0] == 'order') {
       var remaining = uri.pathSegments[1];
       var id = int.tryParse(remaining);
       if (id == null) return PizzaRoutePath.unknown();
       return PizzaRoutePath.order(id);
+    }
+
+    if (uri.pathSegments.length == 1 && uri.pathSegments[0] == 'profile') {
+      return PizzaRoutePath.profile();
     }
 
     // Ismeretlen útvonal
@@ -40,6 +43,9 @@ class PizzaRouteInformationParser
     }
     if (path.isOrderPage) {
       return RouteInformation(location: '/order/${path.id}');
+    }
+    if (path.isProfile) {
+      return RouteInformation(location: '/profile');
     }
     return null;
   }
