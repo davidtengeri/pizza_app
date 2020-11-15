@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/models/address.dart';
+import 'package:pizza_app/screens/profile/address_map.dart';
 
 class AddressCard extends StatelessWidget {
   final Address address;
@@ -32,6 +33,7 @@ class AddressCard extends StatelessWidget {
                 Text(address.houseNumber),
               ],
             ),
+            AddressMap(address: address),
           ],
         ),
       ),

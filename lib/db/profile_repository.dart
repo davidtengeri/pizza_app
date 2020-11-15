@@ -1,4 +1,6 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pizza_app/db/sql.dart';
+import 'package:pizza_app/location_service.dart';
 import 'package:pizza_app/models/address.dart';
 import 'package:pizza_app/models/profile.dart';
 import 'package:sqflite/sqlite_api.dart';
@@ -42,11 +44,12 @@ class ProfileRepository {
     // Átalakítjuk az adatot Address objektumokká
     return List.generate(result.length, (i) {
       return Address(
-        id: result[i]['id'],
-        city: result[i]['city'],
-        street: result[i]['street'],
-        houseNumber: result[i]['houseNumber'],
-      );
+          id: result[i]['id'],
+          city: result[i]['city'],
+          street: result[i]['street'],
+          houseNumber: result[i]['houseNumber'],
+          latLng: LatLng(result[i]['lat'] ?? SZEGED_LATLNG.latitude,
+              result[i]['lng'] ?? SZEGED_LATLNG.longitude));
     });
   }
 
