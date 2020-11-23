@@ -5,6 +5,7 @@ import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/models/profile.dart';
 import 'package:pizza_app/screens/profile/add_address_button.dart';
 import 'package:pizza_app/screens/profile/profile_form.dart';
+import 'package:pizza_app/screens/profile/profile_picture.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -56,10 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           child: Column(
             children: <Widget>[
-              Icon(
-                Icons.account_circle_outlined,
-                size: 150,
-              ),
+              ProfilePicture(),
               if (_profile != null)
                 Expanded(
                   child: ProfileForm(

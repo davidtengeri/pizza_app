@@ -28,6 +28,7 @@ const HUNGARIAN_TEXTS = {
   'small': 'Kicsi',
   'standard': 'Normál',
   'street': 'Utca',
+  'takeAPicture': 'Kép készítése',
   'todaySpecials': 'Mai ajánlatok',
   'toppings': 'Feltétek',
   'total': 'Összesen',

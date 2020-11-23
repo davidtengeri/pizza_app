@@ -59,6 +59,7 @@ class PizzaAppLocalizations {
   String get small => stringById('small');
   String get standard => stringById('standard');
   String get street => stringById('street');
+  String get takeAPicture => stringById('takeAPicture');
   String get todaySpecials => stringById('todaySpecials');
   String get toppings => stringById('toppings');
   String get total => stringById('total');

@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pizza_app/db/profile_repository.dart';
@@ -9,7 +10,15 @@ import 'package:pizza_app/navigation/pizza_router_delegate.dart';
 import 'package:provider/provider.dart';
 import 'package:pizza_app/models/cart.dart';
 
-void main(List<String> args) {
+Future<void> main(List<String> args) async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Elérhető kamerák listája
+  final cameras = await availableCameras();
+
+  // Kivesszük a legelső kamerát a listából
+  final camera = cameras.length > 0 ? cameras.first : null;
+
   final sql = Sql();
   runApp(
     MultiProvider(
@@ -23,6 +32,8 @@ void main(List<String> args) {
         Provider(
           create: (_) => ProfileRepository(sql: sql),
         ),
+        // A kamera a Provider-en keresztül lesz elérhető.
+        Provider.value(value: camera),
       ],
       child: App(),
     ),

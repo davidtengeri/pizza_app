@@ -28,6 +28,7 @@ const ENGLISH_TEXTS = {
   'small': 'Small',
   'standard': 'Standard',
   'street': 'Street',
+  'takeAPicture': 'Take a picture',
   'todaySpecials': 'Today specials',
   'toppings': 'Toppings',
   'total': 'Total',
