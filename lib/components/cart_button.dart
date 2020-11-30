@@ -5,8 +5,13 @@ import 'package:provider/provider.dart';
 
 class CartButton extends StatelessWidget {
   final Color iconColor;
+  final void Function() onPressed;
 
-  const CartButton({Key key, this.iconColor = Colors.white}) : super(key: key);
+  const CartButton({
+    Key key,
+    this.iconColor = Colors.white,
+    this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +22,11 @@ class CartButton extends StatelessWidget {
       padding: EdgeInsets.all(0),
       minWidth: 30,
       child: FlatButton(
-        onPressed: () {},
+        onPressed: () {
+          if (onPressed != null) {
+            onPressed();
+          }
+        },
         child: Stack(
           children: [
             Padding(

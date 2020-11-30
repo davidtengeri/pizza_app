@@ -8,16 +8,24 @@ import 'package:pizza_app/models/address.dart';
 const SZEGED_LATLNG = LatLng(46.2587, 20.14222);
 
 class LocationService {
-  static Future<LatLng> find(Address address) async {
-    var response = await http.get(_buildUrl(address));
-    if (response.statusCode == HttpStatus.ok) {
-      var data = jsonDecode(response.body);
-      if (data.length > 0) {
-        return LatLng(
-            double.parse(data[0]['lat']), double.parse(data[0]['lon']));
+  static Future<LatLng> find(Address address, {http.Client httpClient}) async {
+    var client = httpClient ?? http.Client();
+    var result = SZEGED_LATLNG;
+    try {
+      var response = await client.get(_buildUrl(address));
+      if (response.statusCode == HttpStatus.ok) {
+        var data = jsonDecode(response.body);
+        if (data.length > 0) {
+          result = LatLng(
+              double.parse(data[0]['lat']), double.parse(data[0]['lon']));
+        }
       }
-      return SZEGED_LATLNG;
+    } finally {
+      if (httpClient == null) {
+        client.close();
+      }
     }
+    return result;
   }
 
   static String _buildUrl(Address address) {

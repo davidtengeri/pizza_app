@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:pizza_app/models/cart_item.dart';
 
@@ -14,6 +15,19 @@ class Cart with ChangeNotifier {
   // Új pizza hozzáadása a kosárhoz
   void add(CartItem item) {
     _items.add(item);
+    notifyListeners();
+  }
+
+  void remove(CartItem item) {
+    _items.remove(item);
+    notifyListeners();
+  }
+
+  double get total =>
+      _items.fold(0, (amount, item) => item.pizza.price + amount);
+
+  void setEater(CartItem item, Contact eater) {
+    item.whoWillEat = eater;
     notifyListeners();
   }
 }

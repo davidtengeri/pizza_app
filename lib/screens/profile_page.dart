@@ -9,6 +9,12 @@ import 'package:pizza_app/screens/profile/profile_picture.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
+  final void Function() onShowCart;
+
+  const ProfilePage({
+    Key key,
+    this.onShowCart,
+  }) : super(key: key);
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -47,6 +53,7 @@ class _ProfilePageState extends State<ProfilePage> {
           actions: [
             CartButton(
               iconColor: Colors.black,
+              onPressed: widget.onShowCart,
             ),
           ],
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_app/models/pizza.dart';
 import 'package:pizza_app/navigation/pizza_route_path.dart';
+import 'package:pizza_app/screens/cart_page.dart';
 import 'package:pizza_app/screens/home_page.dart';
 import 'package:pizza_app/screens/pizza_details.dart';
 import 'package:pizza_app/screens/profile_page.dart';
@@ -13,6 +14,7 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
   Pizza _selectedPizza;
   bool show404 = false;
   bool showProfile = false;
+  bool showCart = false;
 
   PizzaRouterDelegate() : _navigatorKey = GlobalKey<NavigatorState>();
 
@@ -22,6 +24,9 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
     }
     if (showProfile) {
       return PizzaRoutePath.profile();
+    }
+    if (showCart) {
+      return PizzaRoutePath.cart();
     }
     return _selectedPizza == null
         ? PizzaRoutePath.home()
@@ -43,6 +48,7 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
           child: HomePage(
             onPizzaSelect: _handleAddToCart,
             onShowProfile: _handleShowProfile,
+            onShowCart: _handleShowCart,
           ),
         ),
         // Ha ismeretlen oldalra tévedtünk, akkor az Unknown widget
@@ -55,7 +61,16 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
         else if (showProfile)
           MaterialPage(
             key: ValueKey('ProfilePage'),
-            child: ProfilePage(),
+            child: ProfilePage(
+              onShowCart: _handleShowCart,
+            ),
+          )
+        else if (showCart)
+          MaterialPage(
+            key: ValueKey('CartPage'),
+            child: CartPage(
+              onShowProfile: _handleShowProfile,
+            ),
           )
         else if (_selectedPizza != null)
           // Egyébként a rendelési oldalon vagyunk, és az URL alapján a rendszer
@@ -65,6 +80,7 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
             child: PizzaDetails(
               pizza: _selectedPizza,
               onShowProfile: _handleShowProfile,
+              onShowCart: _handleShowCart,
             ),
           ),
       ],
@@ -79,6 +95,7 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
         _selectedPizza = null;
         show404 = false;
         showProfile = false;
+        showCart = false;
         // A notifyListener meghívásával jelezhetjük a Router felé,
         // hogy változott a navigációs állapot és frissítenie kell
         // a megjelenítést
@@ -118,6 +135,10 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
       showProfile = true;
     }
 
+    if (path.isCart) {
+      showCart = true;
+    }
+
     show404 = false;
   }
 
@@ -128,6 +149,11 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
 
   void _handleShowProfile() {
     showProfile = true;
+    notifyListeners();
+  }
+
+  void _handleShowCart() {
+    showCart = true;
     notifyListeners();
   }
 }

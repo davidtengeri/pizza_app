@@ -27,6 +27,10 @@ class PizzaRouteInformationParser
       return PizzaRoutePath.profile();
     }
 
+    if (uri.pathSegments.length == 1 && uri.pathSegments[0] == 'cart') {
+      return PizzaRoutePath.cart();
+    }
+
     // Ismeretlen útvonal
     return PizzaRoutePath.unknown();
   }
@@ -46,6 +50,9 @@ class PizzaRouteInformationParser
     }
     if (path.isProfile) {
       return RouteInformation(location: '/profile');
+    }
+    if (path.isCart) {
+      return RouteInformation(location: '/cart');
     }
     return null;
   }

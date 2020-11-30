@@ -10,11 +10,13 @@ typedef OnPizzaSelect = void Function(Pizza pizza);
 class HomePage extends StatelessWidget {
   final OnPizzaSelect onPizzaSelect;
   final void Function() onShowProfile;
+  final void Function() onShowCart;
 
   const HomePage({
     Key key,
     this.onPizzaSelect,
     this.onShowProfile,
+    this.onShowCart,
   }) : super(key: key);
 
   @override
@@ -25,7 +27,9 @@ class HomePage extends StatelessWidget {
           backgroundColor: Colors.red,
           title: Text('Pizza App'),
           actions: [
-            CartButton(),
+            CartButton(
+              onPressed: onShowCart,
+            ),
             ProfileButton(
               onPressed: onShowProfile,
             ),

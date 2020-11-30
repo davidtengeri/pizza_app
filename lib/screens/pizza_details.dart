@@ -21,11 +21,13 @@ import 'package:provider/provider.dart';
 class PizzaDetails extends StatefulWidget {
   final Pizza pizza;
   final void Function() onShowProfile;
+  final void Function() onShowCart;
 
   const PizzaDetails({
     Key key,
     this.pizza,
     this.onShowProfile,
+    this.onShowCart,
   }) : super(key: key);
 
   @override
@@ -96,6 +98,7 @@ class _PizzaDetailsState extends State<PizzaDetails> {
         actions: [
           CartButton(
             iconColor: Colors.black,
+            onPressed: widget.onShowCart,
           ),
           ProfileButton(
             iconColor: Colors.black,

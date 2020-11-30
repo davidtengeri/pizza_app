@@ -4,7 +4,10 @@ const ENGLISH_TEXTS = {
   'addressSaved': 'Address saved',
   'addToCart': 'Add to cart',
   'cancel': 'Cancel',
+  'canNotAccessToContacts': 'Can not access to contacts',
+  'cart': 'Cart',
   'cheeseBurst': 'Cheese Burst',
+  'chooseContact': 'Choose a contact',
   'city': 'City',
   'crust': 'Crust',
   'details': 'Details',
@@ -33,4 +36,5 @@ const ENGLISH_TEXTS = {
   'toppings': 'Toppings',
   'total': 'Total',
   'unknown': 'Unknown',
+  'whoWillEat': 'Who will eat the pizza?'
 };

@@ -37,7 +37,7 @@ class _TakeProfilePictureState extends State<TakeProfilePicture> {
 
     cameraManager = CameraManager(camera: widget.camera);
 
-    // Next, initialize the controller. This returns a Future.
+    // Inicializáljuk a kontrollert.
     _initializeControllerFuture = cameraManager.initialize();
   }
 

@@ -4,7 +4,10 @@ const HUNGARIAN_TEXTS = {
   'addressSaved': 'Cím mentve',
   'addToCart': 'Kosárba',
   'cancel': 'Mégsem',
+  'canNotAccessToContacts': 'Nem lehet hozzáférni a névjegyzékhez',
+  'cart': 'Kosár',
   'cheeseBurst': 'Sajttal töltött',
+  'chooseContact': 'Válassz egy névjegyet',
   'city': 'Város',
   'crust': 'Perem',
   'details': 'Részletek',
@@ -33,4 +36,5 @@ const HUNGARIAN_TEXTS = {
   'toppings': 'Feltétek',
   'total': 'Összesen',
   'unknown': 'Ismeretlen',
+  'whoWillEat': 'Ki eszi majd a pizzát?',
 };

@@ -35,7 +35,10 @@ class PizzaAppLocalizations {
   String get addressSaved => stringById('addressSaved');
   String get addToCart => stringById('addToCart');
   String get cancel => stringById('cancel');
+  String get canNotAccessToContacts => stringById('canNotAccessToContacts');
+  String get cart => stringById('cart');
   String get cheeseBurst => stringById('cheeseBurst');
+  String get chooseContact => stringById('chooseContact');
   String get city => stringById('city');
   String get crust => stringById('crust');
   String get details => stringById('details');
@@ -64,6 +67,7 @@ class PizzaAppLocalizations {
   String get toppings => stringById('toppings');
   String get total => stringById('total');
   String get unknown => stringById('unknown');
+  String get whoWillEat => stringById('whoWillEat');
 }
 
 // Segédosztály, ami az aktuális nyelv alapján hoz létre egy
