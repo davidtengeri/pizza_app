@@ -8,6 +8,7 @@ import 'package:pizza_app/components/profile_button.dart';
 import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/models/cart.dart';
 import 'package:pizza_app/models/cart_item.dart';
+import 'package:pizza_app/screens/details/add_pizza_button.dart';
 import 'package:pizza_app/screens/details/crust.dart';
 import 'package:pizza_app/screens/details/extra_toppings.dart';
 import 'package:pizza_app/screens/details/size.dart';
@@ -172,11 +173,9 @@ class _PizzaDetailsState extends State<PizzaDetails> {
             Total(
               totalPrice: widget.pizza.price,
             ),
-            MaxWidthButton(
-              text: PizzaAppLocalizations.of(context).addToCart,
-              onPressed: () {
-                _addPizzaToCart();
-              },
+            AddPizzaButton(
+              onPressed: _addPizzaToCart,
+              amount: _amount,
             ),
           ],
         ),
