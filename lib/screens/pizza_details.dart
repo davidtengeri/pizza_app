@@ -14,12 +14,12 @@ import 'package:pizza_app/components/rating.dart';
 
 class PizzaDetails extends StatelessWidget {
   const PizzaDetails({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final Pizza pizza = ModalRoute.of(context).settings.arguments;
+    final Pizza pizza = ModalRoute.of(context)!.settings.arguments as Pizza;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -45,7 +45,7 @@ class PizzaDetails extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0),
                     child: SizeSelectorButtons(
-                      image: Image.asset(pizza.imagePath),
+                      image: Image.asset(pizza.imagePath!),
                     ),
                   ),
                 ),
@@ -54,7 +54,7 @@ class PizzaDetails extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        pizza.name,
+                        pizza.name!,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,

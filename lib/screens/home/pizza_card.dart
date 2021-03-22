@@ -5,10 +5,10 @@ import 'package:pizza_app/screens/pizza_details.dart';
 import '../../models/pizza.dart';
 
 class PizzaCard extends StatelessWidget {
-  final Pizza pizza;
-  final EdgeInsetsGeometry padding;
+  final Pizza? pizza;
+  final EdgeInsetsGeometry? padding;
 
-  const PizzaCard({Key key, this.pizza, this.padding}) : super(key: key);
+  const PizzaCard({Key? key, this.pizza, this.padding}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class PizzaCard extends StatelessWidget {
             blurRadius: 30,
           ),
           BoxShadow(
-            color: Colors.grey[900].withOpacity(0.3),
+            color: Colors.grey[900]!.withOpacity(0.3),
             spreadRadius: 2,
             offset: Offset(7, 7),
             blurRadius: 20,
@@ -44,7 +44,7 @@ class PizzaCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    pizza.name,
+                    pizza!.name!,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -57,7 +57,7 @@ class PizzaCard extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          '\$${pizza.price.toStringAsPrecision(4)}',
+                          '\$${pizza!.price!.toStringAsPrecision(4)}',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -66,7 +66,7 @@ class PizzaCard extends StatelessWidget {
                           padding: const EdgeInsets.only(
                             left: 10,
                           ),
-                          child: Rating(rating: pizza.rating),
+                          child: Rating(rating: pizza!.rating),
                         )
                       ],
                     ),
@@ -74,7 +74,7 @@ class PizzaCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0),
                     child: Text(
-                      pizza.topping,
+                      pizza!.topping!,
                       style: TextStyle(
                         color: Colors.grey[700],
                       ),
