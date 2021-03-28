@@ -8,7 +8,7 @@ typedef OnPizzaSelect = void Function(Pizza pizza);
 class HomePage extends StatelessWidget {
   final OnPizzaSelect onPizzaSelect;
 
-  const HomePage({Key key, this.onPizzaSelect}) : super(key: key);
+  const HomePage({Key? key, required this.onPizzaSelect}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

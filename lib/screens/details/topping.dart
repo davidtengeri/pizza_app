@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Topping extends StatelessWidget {
-  final String topping;
+  final String? topping;
 
   const Topping({
-    Key key,
+    Key? key,
     this.topping,
   }) : super(key: key);
 
@@ -14,7 +14,7 @@ class Topping extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.all(10),
       child: Text(
-        topping,
+        topping!,
         style: TextStyle(
           fontSize: 15,
         ),

@@ -1,6 +1,6 @@
 // Az egyes útvonalak belső reprezentációja
 class PizzaRoutePath {
-  final int id;
+  final int? id;
   final bool isUnknown;
 
   PizzaRoutePath.home()

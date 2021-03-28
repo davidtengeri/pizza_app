@@ -13,10 +13,10 @@ import 'package:pizza_app/models/pizza.dart';
 import 'package:pizza_app/components/rating.dart';
 
 class PizzaDetails extends StatelessWidget {
-  final Pizza pizza;
+  final Pizza? pizza;
 
   const PizzaDetails({
-    Key key,
+    Key? key,
     this.pizza,
   }) : super(key: key);
 
@@ -47,7 +47,7 @@ class PizzaDetails extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0),
                     child: SizeSelectorButtons(
-                      image: Image.asset(pizza.imagePath),
+                      image: Image.asset(pizza!.imagePath!),
                     ),
                   ),
                 ),
@@ -56,14 +56,14 @@ class PizzaDetails extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        pizza.name,
+                        pizza!.name!,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Rating(
-                        rating: pizza.rating,
+                        rating: pizza!.rating,
                       ),
                       AmountSelector(
                         amount: 1,
@@ -78,7 +78,7 @@ class PizzaDetails extends StatelessWidget {
                 child: ListView(
               children: [
                 Topping(
-                  topping: pizza.topping,
+                  topping: pizza!.topping,
                 ),
                 Size(),
                 Crust(),
@@ -86,7 +86,7 @@ class PizzaDetails extends StatelessWidget {
               ],
             )),
             Total(
-              totalPrice: pizza.price,
+              totalPrice: pizza!.price,
             ),
             MaxWidthButton(
               text: 'Add to cart',
