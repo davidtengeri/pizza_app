@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:pizza_app/screens/details/size.dart';
 
 class _SizeSelector extends StatelessWidget {
-  final String size;
-  final Function onPressed;
-  final bool active;
+  final String? size;
+  final Function? onPressed;
+  final bool? active;
 
-  const _SizeSelector({Key key, this.size, this.onPressed, this.active})
+  const _SizeSelector({Key? key, this.size, this.onPressed, this.active})
       : super(key: key);
 
   @override
@@ -16,13 +16,13 @@ class _SizeSelector extends StatelessWidget {
       height: 30,
       padding: EdgeInsets.all(0),
       child: RaisedButton(
-        onPressed: onPressed,
-        color: active ? Colors.red : Colors.grey,
+        onPressed: onPressed as void Function()?,
+        color: active! ? Colors.red : Colors.grey,
         shape: new RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(50.0),
         ),
         child: Text(
-          size,
+          size!,
           style: TextStyle(
             color: Colors.white,
             fontSize: 10,

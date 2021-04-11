@@ -5,9 +5,9 @@ class AmountSelector extends StatelessWidget {
   final void Function(int amount) amountChange;
 
   const AmountSelector({
-    Key key,
-    @required this.amount,
-    @required this.amountChange,
+    Key? key,
+    required this.amount,
+    required this.amountChange,
   }) : super(key: key);
 
   void decreaseAmount() {

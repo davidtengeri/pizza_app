@@ -2,10 +2,10 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
 class Total extends StatelessWidget {
-  final double totalPrice;
+  final double? totalPrice;
 
   const Total({
-    Key key,
+    Key? key,
     this.totalPrice,
   }) : super(key: key);
 
@@ -21,7 +21,7 @@ class Total extends StatelessWidget {
             ..moveTo(0, 0)
             ..lineTo(size.width, 0);
         },
-        color: Colors.grey[500],
+        color: Colors.grey[500]!,
         dashPattern: [6, 4],
         child: Container(
           padding: EdgeInsets.only(
@@ -39,7 +39,7 @@ class Total extends StatelessWidget {
                 ),
               ),
               Text(
-                '\$${totalPrice.toStringAsPrecision(4)}',
+                '\$${totalPrice!.toStringAsPrecision(4)}',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.red,

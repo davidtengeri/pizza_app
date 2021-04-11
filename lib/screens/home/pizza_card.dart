@@ -5,12 +5,12 @@ import 'package:pizza_app/screens/home_page.dart';
 
 class PizzaCard extends StatelessWidget {
   final Pizza pizza;
-  final EdgeInsetsGeometry padding;
-  final OnPizzaSelect onPizzaSelect;
+  final EdgeInsetsGeometry? padding;
+  final OnPizzaSelect? onPizzaSelect;
 
   const PizzaCard({
-    Key key,
-    this.pizza,
+    Key? key,
+    required this.pizza,
     this.padding,
     this.onPizzaSelect,
   }) : super(key: key);
@@ -33,7 +33,7 @@ class PizzaCard extends StatelessWidget {
             blurRadius: 30,
           ),
           BoxShadow(
-            color: Colors.grey[900].withOpacity(0.3),
+            color: Colors.grey[900]!.withOpacity(0.3),
             spreadRadius: 2,
             offset: Offset(7, 7),
             blurRadius: 20,
@@ -49,7 +49,7 @@ class PizzaCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    pizza.name,
+                    pizza.name!,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -62,7 +62,7 @@ class PizzaCard extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          '\$${pizza.price.toStringAsPrecision(4)}',
+                          '\$${pizza.price!.toStringAsPrecision(4)}',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -79,7 +79,7 @@ class PizzaCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0),
                     child: Text(
-                      pizza.topping,
+                      pizza.topping!,
                       style: TextStyle(
                         color: Colors.grey[700],
                       ),
@@ -91,7 +91,7 @@ class PizzaCard extends StatelessWidget {
           ),
           RaisedButton(
             onPressed: () {
-              onPizzaSelect(pizza);
+              onPizzaSelect!(pizza);
             },
             child: Text(
               'Add to cart',
