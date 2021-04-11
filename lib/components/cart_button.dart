@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 class CartButton extends StatelessWidget {
   final Color iconColor;
 
-  const CartButton({Key key, this.iconColor = Colors.white}) : super(key: key);
+  const CartButton({Key? key, this.iconColor = Colors.white}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

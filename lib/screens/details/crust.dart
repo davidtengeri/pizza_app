@@ -13,7 +13,11 @@ class Crust extends StatelessWidget {
     'Cheese Burst',
   ];
 
-  Crust({Key key, this.onCrustSelect, this.crust}) : super(key: key);
+  Crust({
+    Key? key,
+    required this.onCrustSelect,
+    required this.crust,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

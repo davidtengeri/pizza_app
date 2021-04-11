@@ -49,7 +49,7 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
           MaterialPage(
             key: ObjectKey(_selectedPizza),
             child: PizzaDetails(
-              pizza: _selectedPizza,
+              pizza: _selectedPizza!,
             ),
           ),
       ],

@@ -17,11 +17,11 @@ import 'package:pizza_app/components/rating.dart';
 import 'package:provider/provider.dart';
 
 class PizzaDetails extends StatefulWidget {
-  final Pizza? pizza;
+  final Pizza pizza;
 
   const PizzaDetails({
     Key? key,
-    this.pizza,
+    required this.pizza,
   }) : super(key: key);
 
   @override

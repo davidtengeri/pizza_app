@@ -6,8 +6,12 @@ class _SizeSelector extends StatelessWidget {
   final Function? onPressed;
   final bool? active;
 
-  const _SizeSelector({Key? key, this.size, this.onPressed, this.active})
-      : super(key: key);
+  const _SizeSelector({
+    Key? key,
+    required this.size,
+    required this.onPressed,
+    required this.active,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +42,12 @@ class SizeSelectorButtons extends StatelessWidget {
   final String size;
   final OnSizeChange onSizeChange;
 
-  const SizeSelectorButtons({Key key, this.image, this.size, this.onSizeChange})
-      : super(key: key);
+  const SizeSelectorButtons({
+    Key? key,
+    required this.image,
+    required this.size,
+    required this.onSizeChange,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -19,8 +19,8 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  PizzaRouterDelegate _routerDelegate;
-  PizzaRouteInformationParser _routeInformationParser;
+  late PizzaRouterDelegate _routerDelegate;
+  late PizzaRouteInformationParser _routeInformationParser;
 
   @override
   void initState() {
