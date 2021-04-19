@@ -28,7 +28,7 @@ class Crust extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            PizzaAppLocalizations.of(context).crust,
+            PizzaAppLocalizations.of(context)!.crust,
             style: TextStyle(
               fontSize: 20,
             ),
@@ -38,7 +38,7 @@ class Crust extends StatelessWidget {
             texts: options
                 .map(
                   (option) =>
-                      PizzaAppLocalizations.of(context).stringById(option),
+                      PizzaAppLocalizations.of(context)!.stringById(option),
                 )
                 .toList(),
             isSelected: [

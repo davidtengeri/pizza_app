@@ -61,7 +61,7 @@ class PizzaCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        pizza.name!,
+                        pizza.name,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -76,7 +76,7 @@ class PizzaCard extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          '\$${pizza.price!.toStringAsPrecision(4)}',
+                          '\$${pizza.price.toStringAsPrecision(4)}',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -93,7 +93,7 @@ class PizzaCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0),
                     child: Text(
-                      pizza.topping!,
+                      pizza.topping,
                       style: TextStyle(
                         color: Colors.grey[700],
                       ),
@@ -108,7 +108,7 @@ class PizzaCard extends StatelessWidget {
               onPizzaSelect!(pizza);
             },
             child: Text(
-              PizzaAppLocalizations.of(context).addToCart,
+              PizzaAppLocalizations.of(context)!.addToCart,
             ),
             color: Colors.red,
             textColor: Colors.white,

@@ -32,7 +32,7 @@ class Total extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  PizzaAppLocalizations.of(context).total,
+                  PizzaAppLocalizations.of(context)!.total,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,

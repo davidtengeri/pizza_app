@@ -68,7 +68,7 @@ class Featured extends StatelessWidget {
               // Kép beillesztése az asset-ekből. Az, hogy milyen asset-ek
               // érhetőek el, a pubspec.yml fájlban mindig definiálni kell.
               child: Image.asset(
-                pizza.imagePath!,
+                pizza.imagePath,
               ),
             ),
           ),

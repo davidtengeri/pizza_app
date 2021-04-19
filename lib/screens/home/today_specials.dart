@@ -35,7 +35,7 @@ class TodaySpecials extends StatelessWidget {
             width: 120,
             height: 120,
             margin: EdgeInsets.only(top: 35),
-            child: Image.asset(pizza.imagePath!),
+            child: Image.asset(pizza.imagePath),
           ),
         ],
       ),
@@ -52,7 +52,7 @@ class TodaySpecials extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              PizzaAppLocalizations.of(context).todaySpecials,
+              PizzaAppLocalizations.of(context)!.todaySpecials,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,

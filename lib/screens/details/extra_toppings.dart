@@ -27,7 +27,7 @@ class ExtraToppings extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            PizzaAppLocalizations.of(context).toppings,
+            PizzaAppLocalizations.of(context)!.toppings,
             style: TextStyle(
               fontSize: 20,
             ),
@@ -37,7 +37,7 @@ class ExtraToppings extends StatelessWidget {
             texts: options
                 .map(
                   (option) =>
-                      PizzaAppLocalizations.of(context).stringById(option),
+                      PizzaAppLocalizations.of(context)!.stringById(option),
                 )
                 .toList(),
             isSelected: [
