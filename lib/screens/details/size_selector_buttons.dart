@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:pizza_app/screens/details/size.dart';
 
 class _SizeSelector extends StatelessWidget {
-  final String size;
-  final Function onPressed;
-  final bool active;
+  final String? size;
+  final Function? onPressed;
+  final bool? active;
 
-  const _SizeSelector({Key key, this.size, this.onPressed, this.active})
-      : super(key: key);
+  const _SizeSelector({
+    Key? key,
+    required this.size,
+    required this.onPressed,
+    required this.active,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +20,13 @@ class _SizeSelector extends StatelessWidget {
       height: 30,
       padding: EdgeInsets.all(0),
       child: RaisedButton(
-        onPressed: onPressed,
-        color: active ? Colors.red : Colors.grey,
+        onPressed: onPressed as void Function()?,
+        color: active! ? Colors.red : Colors.grey,
         shape: new RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(50.0),
         ),
         child: Text(
-          size,
+          size!,
           style: TextStyle(
             color: Colors.white,
             fontSize: 10,
@@ -38,8 +42,12 @@ class SizeSelectorButtons extends StatelessWidget {
   final String size;
   final OnSizeChange onSizeChange;
 
-  const SizeSelectorButtons({Key key, this.image, this.size, this.onSizeChange})
-      : super(key: key);
+  const SizeSelectorButtons({
+    Key? key,
+    required this.image,
+    required this.size,
+    required this.onSizeChange,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

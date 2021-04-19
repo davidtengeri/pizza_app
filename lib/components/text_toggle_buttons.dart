@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class TextToggleButtons extends StatelessWidget {
-  final List<String> texts;
-  final List<bool> isSelected;
-  final void Function(int index) onPressed;
+  final List<String>? texts;
+  final List<bool>? isSelected;
+  final void Function(int index)? onPressed;
 
   const TextToggleButtons({
-    Key key,
+    Key? key,
     this.texts,
     this.isSelected,
     this.onPressed,
@@ -28,9 +28,9 @@ class TextToggleButtons extends StatelessWidget {
             selectedBorderColor: Colors.red,
             selectedColor: Colors.red,
             fillColor: Colors.white,
-            children: texts.map((t) => Text(t)).toList(),
+            children: texts!.map((t) => Text(t)).toList(),
             onPressed: onPressed,
-            isSelected: isSelected,
+            isSelected: isSelected!,
           ),
         ),
       ),

@@ -21,8 +21,8 @@ class PizzaDetails extends StatefulWidget {
   final Pizza pizza;
 
   const PizzaDetails({
-    Key key,
-    this.pizza,
+    Key? key,
+    required this.pizza,
   }) : super(key: key);
 
   @override

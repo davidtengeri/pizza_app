@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class MaxWidthButton extends StatelessWidget {
-  final String text;
-  final void Function() onPressed;
+  final String? text;
+  final void Function()? onPressed;
 
   const MaxWidthButton({
-    Key key,
+    Key? key,
     this.text,
     this.onPressed,
   }) : super(key: key);
@@ -22,7 +22,7 @@ class MaxWidthButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(30),
           ),
           child: Text(
-            text,
+            text!,
             style: TextStyle(
               color: Colors.white,
             ),

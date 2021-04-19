@@ -13,8 +13,11 @@ class ExtraToppings extends StatelessWidget {
   final String topping;
   final OnToppingChange onToppingChange;
 
-  ExtraToppings({Key key, this.topping, this.onToppingChange})
-      : super(key: key);
+  ExtraToppings({
+    Key? key,
+    required this.topping,
+    required this.onToppingChange,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

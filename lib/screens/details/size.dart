@@ -14,7 +14,11 @@ class Size extends StatelessWidget {
   final String size;
   final OnSizeChange onSizeChange;
 
-  Size({Key key, this.size, this.onSizeChange}) : super(key: key);
+  Size({
+    Key? key,
+    required this.size,
+    required this.onSizeChange,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
