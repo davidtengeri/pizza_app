@@ -4,13 +4,13 @@ import 'package:sqflite/sqlite_api.dart';
 
 // Adatbázis kapcsolatok kezelése
 class Sql {
-  Database _database;
+  Database? _database;
 
   // Ez a getter létrehozza a kapcsolatot az adatázissal és eltárolja azt
   // későbbi felhasználás céljából.
   Future<Database> get database async {
     if (_database != null) {
-      return _database;
+      return _database!;
     }
     _database = await openDatabase(
       // Az adatbázis fájl alapú. Ennek a fájlnak a helyét állítjuk elő
@@ -46,6 +46,6 @@ class Sql {
         ''');
       },
     );
-    return _database;
+    return _database!;
   }
 }

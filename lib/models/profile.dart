@@ -1,10 +1,10 @@
 import 'package:pizza_app/models/address.dart';
 
 class Profile {
-  int id;
-  String name;
-  String phone;
-  String email;
+  int? id;
+  String? name;
+  String? phone;
+  String? email;
   List<Address> addresses = [];
 
   void addAddress(Address address) {
@@ -16,7 +16,7 @@ class Profile {
   }
 
   Map<String, dynamic> toMap() {
-    Map map = <String, dynamic>{
+    Map<String, dynamic> map = <String, dynamic>{
       'name': name,
       'email': email,
       'phone': phone,
