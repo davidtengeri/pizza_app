@@ -14,7 +14,11 @@ class Crust extends StatelessWidget {
     'cheeseBurst',
   ];
 
-  Crust({Key key, this.onCrustSelect, this.crust}) : super(key: key);
+  Crust({
+    Key? key,
+    required this.onCrustSelect,
+    required this.crust,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,7 @@ class Crust extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            PizzaAppLocalizations.of(context).crust,
+            PizzaAppLocalizations.of(context)!.crust,
             style: TextStyle(
               fontSize: 20,
             ),
@@ -34,7 +38,7 @@ class Crust extends StatelessWidget {
             texts: options
                 .map(
                   (option) =>
-                      PizzaAppLocalizations.of(context).stringById(option),
+                      PizzaAppLocalizations.of(context)!.stringById(option),
                 )
                 .toList(),
             isSelected: [
