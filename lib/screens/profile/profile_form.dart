@@ -34,7 +34,7 @@ class _ProfileFormState extends State<ProfileForm> {
   void saveProfile(BuildContext context) async {
     var repository = context.read<ProfileRepository>();
     await repository.save(widget.profile);
-    Scaffold.of(context)
+    ScaffoldMessenger.of(context)
       ..removeCurrentSnackBar()
       ..showSnackBar(
         SnackBar(

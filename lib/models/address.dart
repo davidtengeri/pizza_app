@@ -6,14 +6,14 @@ class Address {
   String city;
   String street;
   String houseNumber;
-  LatLng latLng;
+  LatLng? latLng;
 
   Address({
     this.id,
     required this.city,
     required this.street,
     required this.houseNumber,
-    required this.latLng,
+    this.latLng,
   });
 
   @override
@@ -31,11 +31,13 @@ class Address {
       'city': city,
       'street': street,
       'houseNumber': houseNumber,
-      'lat': latLng.latitude,
-      'lng': latLng.longitude,
     };
     if (id != null) {
       map['id'] = id!;
+    }
+    if (latLng != null) {
+      map['lat'] = latLng!.latitude;
+      map['lng'] = latLng!.longitude;
     }
     return map;
   }

@@ -31,7 +31,7 @@ class AddAddressButton extends StatelessWidget {
       // Call the callback
       await onAddressSaved();
       // Show info to the user
-      Scaffold.of(context)
+      ScaffoldMessenger.of(context)
         ..removeCurrentSnackBar()
         ..showSnackBar(
           SnackBar(

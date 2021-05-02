@@ -16,11 +16,12 @@ class LocationService {
         return LatLng(
             double.parse(data[0]['lat']), double.parse(data[0]['lon']));
       }
-      return SZEGED_LATLNG;
     }
+    return SZEGED_LATLNG;
   }
 
-  static String _buildUrl(Address address) {
-    return 'https://nominatim.openstreetmap.org/search?format=json&counrty=Hungary&city=${address.city}&street=${address.houseNumber} ${address.street}';
+  static Uri _buildUrl(Address address) {
+    return Uri.parse(
+        'https://nominatim.openstreetmap.org/search?format=json&counrty=Hungary&city=${address.city}&street=${address.houseNumber} ${address.street}');
   }
 }
