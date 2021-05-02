@@ -18,7 +18,7 @@ class _AddressFormDialogState extends State<AddressFormDialog> {
     // Creates a dialog
     return SimpleDialog(
       title: Container(
-        child: Text(PizzaAppLocalizations.of(context).addAddressDialogTitle),
+        child: Text(PizzaAppLocalizations.of(context)!.addAddressDialogTitle),
         alignment: Alignment.center,
       ),
       contentPadding: EdgeInsets.all(10),
@@ -30,11 +30,11 @@ class _AddressFormDialogState extends State<AddressFormDialog> {
               TextFormField(
                 controller: _cityController,
                 decoration: InputDecoration(
-                  labelText: PizzaAppLocalizations.of(context).city,
+                  labelText: PizzaAppLocalizations.of(context)!.city,
                 ),
                 validator: (value) {
-                  if (value.isEmpty) {
-                    return PizzaAppLocalizations.of(context).mandatoryField;
+                  if (value != null && value.isEmpty) {
+                    return PizzaAppLocalizations.of(context)!.mandatoryField;
                   }
                   return null;
                 },
@@ -42,11 +42,11 @@ class _AddressFormDialogState extends State<AddressFormDialog> {
               TextFormField(
                 controller: _streetController,
                 decoration: InputDecoration(
-                  labelText: PizzaAppLocalizations.of(context).street,
+                  labelText: PizzaAppLocalizations.of(context)!.street,
                 ),
                 validator: (value) {
-                  if (value.isEmpty) {
-                    return PizzaAppLocalizations.of(context).mandatoryField;
+                  if (value != null && value.isEmpty) {
+                    return PizzaAppLocalizations.of(context)!.mandatoryField;
                   }
                   return null;
                 },
@@ -54,12 +54,12 @@ class _AddressFormDialogState extends State<AddressFormDialog> {
               TextFormField(
                 controller: _houseNumberController,
                 decoration: InputDecoration(
-                  labelText: PizzaAppLocalizations.of(context).houseNumber,
+                  labelText: PizzaAppLocalizations.of(context)!.houseNumber,
                 ),
                 cursorColor: Colors.red,
                 validator: (value) {
-                  if (value.isEmpty) {
-                    return PizzaAppLocalizations.of(context).mandatoryField;
+                  if (value != null && value.isEmpty) {
+                    return PizzaAppLocalizations.of(context)!.mandatoryField;
                   }
                   return null;
                 },
@@ -72,11 +72,11 @@ class _AddressFormDialogState extends State<AddressFormDialog> {
                       Navigator.of(context).pop();
                     },
                     textColor: Colors.red[200],
-                    child: Text(PizzaAppLocalizations.of(context).cancel),
+                    child: Text(PizzaAppLocalizations.of(context)!.cancel),
                   ),
                   FlatButton(
                     onPressed: () {
-                      if (_formKey.currentState.validate()) {
+                      if (_formKey.currentState!.validate()) {
                         Navigator.of(context).pop(
                           Address(
                               city: _cityController.value.text,
@@ -86,7 +86,7 @@ class _AddressFormDialogState extends State<AddressFormDialog> {
                       }
                     },
                     textColor: Colors.red,
-                    child: Text(PizzaAppLocalizations.of(context).save),
+                    child: Text(PizzaAppLocalizations.of(context)!.save),
                   ),
                 ],
               ),

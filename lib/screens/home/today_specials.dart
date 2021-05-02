@@ -5,9 +5,9 @@ import 'package:pizza_app/screens/home/pizza_card.dart';
 import 'package:pizza_app/screens/home_page.dart';
 
 class TodaySpecials extends StatelessWidget {
-  final OnPizzaSelect onPizzaSelect;
+  final OnPizzaSelect? onPizzaSelect;
 
-  const TodaySpecials({Key key, this.onPizzaSelect}) : super(key: key);
+  const TodaySpecials({Key? key, this.onPizzaSelect}) : super(key: key);
   // Ez a metódus a lista elemeit építi fel. Az elemek a PIZZAS listában
   // találhatók.
   Widget _buildItem(BuildContext context, int index) {
@@ -52,7 +52,7 @@ class TodaySpecials extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              PizzaAppLocalizations.of(context).todaySpecials,
+              PizzaAppLocalizations.of(context)!.todaySpecials,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,

@@ -6,7 +6,7 @@ class PizzaRouteInformationParser
   @override
   Future<PizzaRoutePath> parseRouteInformation(
       RouteInformation routeInformation) async {
-    final uri = Uri.parse(routeInformation.location);
+    final uri = Uri.parse(routeInformation.location!);
     // Kezdő oldal
     if (uri.pathSegments.length == 0) {
       return PizzaRoutePath.home();
@@ -34,7 +34,7 @@ class PizzaRouteInformationParser
   // Saját belső útvonal reprezentációnk alapján állítja elő az
   // útvonal információkat. Web-es platform esetén használatos.
   @override
-  RouteInformation restoreRouteInformation(PizzaRoutePath path) {
+  RouteInformation? restoreRouteInformation(PizzaRoutePath path) {
     if (path.isUnknown) {
       return RouteInformation(location: '/404');
     }

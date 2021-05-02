@@ -6,7 +6,10 @@ import 'package:provider/provider.dart';
 class FavouriteButton extends StatelessWidget {
   final Pizza pizza;
 
-  const FavouriteButton({Key key, this.pizza}) : super(key: key);
+  const FavouriteButton({
+    Key? key,
+    required this.pizza,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var favourites = context.watch<Favourites>();

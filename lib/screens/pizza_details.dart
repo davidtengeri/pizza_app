@@ -23,9 +23,9 @@ class PizzaDetails extends StatefulWidget {
   final void Function() onShowProfile;
 
   const PizzaDetails({
-    Key key,
-    this.pizza,
-    this.onShowProfile,
+    Key? key,
+    required this.pizza,
+    required this.onShowProfile,
   }) : super(key: key);
 
   @override
@@ -33,9 +33,9 @@ class PizzaDetails extends StatefulWidget {
 }
 
 class _PizzaDetailsState extends State<PizzaDetails> {
-  String _crust;
-  String _size;
-  String _topping;
+  String _crust = 'standard';
+  String _size = 'small';
+  String _topping = 'standard';
   int _amount = 1;
 
   @override
@@ -90,7 +90,7 @@ class _PizzaDetailsState extends State<PizzaDetails> {
           color: Colors.black,
         ),
         title: Text(
-          PizzaAppLocalizations.of(context).details,
+          PizzaAppLocalizations.of(context)!.details,
           style: TextStyle(color: Colors.grey[900]),
         ),
         actions: [
@@ -170,7 +170,7 @@ class _PizzaDetailsState extends State<PizzaDetails> {
               totalPrice: widget.pizza.price,
             ),
             MaxWidthButton(
-              text: PizzaAppLocalizations.of(context).addToCart,
+              text: PizzaAppLocalizations.of(context)!.addToCart,
               onPressed: () {
                 _addPizzaToCart();
               },
