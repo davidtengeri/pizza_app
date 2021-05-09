@@ -8,7 +8,7 @@ import 'package:sqflite/sqlite_api.dart';
 class ProfileRepository {
   final Sql sql;
 
-  ProfileRepository({this.sql});
+  ProfileRepository({required this.sql});
 
   Future<Profile> load() async {
     Profile profile = Profile();

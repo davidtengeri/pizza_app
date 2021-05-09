@@ -6,7 +6,10 @@ import 'package:pizza_app/screens/profile/address_map.dart';
 class AddressCard extends StatelessWidget {
   final Address address;
 
-  AddressCard({Key key, this.address}) : super(key: key);
+  AddressCard({
+    Key? key,
+    required this.address,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +20,19 @@ class AddressCard extends StatelessWidget {
           children: <Widget>[
             Row(
               children: <Widget>[
-                Text('${PizzaAppLocalizations.of(context).city}: '),
+                Text('${PizzaAppLocalizations.of(context)!.city}: '),
                 Text(address.city),
               ],
             ),
             Row(
               children: <Widget>[
-                Text('${PizzaAppLocalizations.of(context).street}: '),
+                Text('${PizzaAppLocalizations.of(context)!.street}: '),
                 Text(address.street),
               ],
             ),
             Row(
               children: <Widget>[
-                Text('${PizzaAppLocalizations.of(context).houseNumber}: '),
+                Text('${PizzaAppLocalizations.of(context)!.houseNumber}: '),
                 Text(address.houseNumber),
               ],
             ),

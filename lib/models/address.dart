@@ -2,17 +2,17 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:quiver/core.dart';
 
 class Address {
-  int id;
+  int? id;
   String city;
   String street;
   String houseNumber;
-  LatLng latLng;
+  LatLng? latLng;
 
   Address({
     this.id,
-    this.city,
-    this.street,
-    this.houseNumber,
+    required this.city,
+    required this.street,
+    required this.houseNumber,
     this.latLng,
   });
 
@@ -27,15 +27,17 @@ class Address {
   int get hashCode => hash3(city, street, houseNumber);
 
   Map<String, dynamic> toMap() {
-    Map map = <String, dynamic>{
+    Map<String, dynamic> map = <String, dynamic>{
       'city': city,
       'street': street,
       'houseNumber': houseNumber,
-      'lat': latLng.latitude,
-      'lng': latLng.longitude,
     };
     if (id != null) {
-      map['id'] = id;
+      map['id'] = id!;
+    }
+    if (latLng != null) {
+      map['lat'] = latLng!.latitude;
+      map['lng'] = latLng!.longitude;
     }
     return map;
   }

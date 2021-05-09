@@ -7,9 +7,9 @@ class CartItem {
   final String topping;
 
   CartItem({
-    this.pizza,
-    this.size,
-    this.crust,
-    this.topping,
+    required this.pizza,
+    required this.size,
+    required this.crust,
+    required this.topping,
   });
 }

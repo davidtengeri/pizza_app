@@ -9,11 +9,11 @@ class Pizza {
   final int rating;
 
   const Pizza({
-    this.name,
-    this.topping,
-    this.price,
-    this.imagePath,
-    this.rating,
+    required this.name,
+    required this.topping,
+    required this.price,
+    required this.imagePath,
+    required this.rating,
   });
 
   bool operator ==(Object other) =>

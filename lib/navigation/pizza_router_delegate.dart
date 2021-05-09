@@ -10,7 +10,7 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<PizzaRoutePath> {
   final GlobalKey<NavigatorState> _navigatorKey;
 
-  Pizza _selectedPizza;
+  Pizza? _selectedPizza;
   bool show404 = false;
   bool showProfile = false;
 
@@ -25,7 +25,7 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
     }
     return _selectedPizza == null
         ? PizzaRoutePath.home()
-        : PizzaRoutePath.order(PIZZAS.indexOf(_selectedPizza));
+        : PizzaRoutePath.order(PIZZAS.indexOf(_selectedPizza!));
   }
 
   // Ebben a metódusban rakjuk össze, hogyan épül fel a stack.
@@ -63,7 +63,7 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
           MaterialPage(
             key: ObjectKey(_selectedPizza),
             child: PizzaDetails(
-              pizza: _selectedPizza,
+              pizza: _selectedPizza!,
               onShowProfile: _handleShowProfile,
             ),
           ),
@@ -104,12 +104,12 @@ class PizzaRouterDelegate extends RouterDelegate<PizzaRoutePath>
     }
 
     if (path.isOrderPage) {
-      if (path.id < 0 || path.id > PIZZAS.length - 1) {
+      if (path.id! < 0 || path.id! > PIZZAS.length - 1) {
         show404 = true;
         return;
       }
 
-      _selectedPizza = PIZZAS[path.id];
+      _selectedPizza = PIZZAS[path.id!];
     } else {
       _selectedPizza = null;
     }

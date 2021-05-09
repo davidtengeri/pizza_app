@@ -11,7 +11,7 @@ class Unknown extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(PizzaAppLocalizations.of(context).unknown),
+            Text(PizzaAppLocalizations.of(context)!.unknown),
           ],
         ),
       ),

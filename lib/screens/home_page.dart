@@ -12,9 +12,9 @@ class HomePage extends StatelessWidget {
   final void Function() onShowProfile;
 
   const HomePage({
-    Key key,
-    this.onPizzaSelect,
-    this.onShowProfile,
+    Key? key,
+    required this.onPizzaSelect,
+    required this.onShowProfile,
   }) : super(key: key);
 
   @override
