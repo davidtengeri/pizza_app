@@ -10,7 +10,10 @@ import 'package:provider/provider.dart';
 class AddAddressButton extends StatelessWidget {
   final Function onAddressSaved;
 
-  AddAddressButton({Key key, @required this.onAddressSaved}) : super(key: key);
+  AddAddressButton({
+    Key? key,
+    required this.onAddressSaved,
+  }) : super(key: key);
 
   Future<void> _addAddress(BuildContext context) async {
     var address = await showDialog<Address>(
@@ -28,11 +31,11 @@ class AddAddressButton extends StatelessWidget {
       // Call the callback
       await onAddressSaved();
       // Show info to the user
-      Scaffold.of(context)
+      ScaffoldMessenger.of(context)
         ..removeCurrentSnackBar()
         ..showSnackBar(
           SnackBar(
-            content: Text(PizzaAppLocalizations.of(context).addressSaved),
+            content: Text(PizzaAppLocalizations.of(context)!.addressSaved),
           ),
         );
     }

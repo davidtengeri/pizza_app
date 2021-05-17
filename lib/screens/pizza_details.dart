@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:pizza_app/components/amount_selector.dart';
 import 'package:pizza_app/components/cart_button.dart';
-import 'package:pizza_app/components/max_width_button.dart';
 import 'package:pizza_app/components/profile_button.dart';
 import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/models/cart.dart';
@@ -25,10 +24,10 @@ class PizzaDetails extends StatefulWidget {
   final void Function() onShowCart;
 
   const PizzaDetails({
-    Key key,
-    this.pizza,
-    this.onShowProfile,
-    this.onShowCart,
+    Key? key,
+    required this.pizza,
+    required this.onShowProfile,
+    required this.onShowCart,
   }) : super(key: key);
 
   @override
@@ -36,9 +35,9 @@ class PizzaDetails extends StatefulWidget {
 }
 
 class _PizzaDetailsState extends State<PizzaDetails> {
-  String _crust;
-  String _size;
-  String _topping;
+  String _crust = 'standard';
+  String _size = 'small';
+  String _topping = 'standard';
   int _amount = 1;
 
   @override
@@ -93,7 +92,7 @@ class _PizzaDetailsState extends State<PizzaDetails> {
           color: Colors.black,
         ),
         title: Text(
-          PizzaAppLocalizations.of(context).details,
+          PizzaAppLocalizations.of(context)!.details,
           style: TextStyle(color: Colors.grey[900]),
         ),
         actions: [

@@ -2,12 +2,12 @@ import 'package:camera/camera.dart';
 
 // Segédosztály a CameraController kezeléséhez
 class CameraManager {
-  CameraController _cameraController;
-  Future<void> _initializeControllerFuture;
+  late CameraController _cameraController;
+  late Future<void> _initializeControllerFuture;
   final CameraDescription camera;
 
-  CameraManager({this.camera});
-  // CameraController inicializálása
+  CameraManager({required this.camera});
+
   Future<void> initialize() async {
     _cameraController = CameraController(
       camera,

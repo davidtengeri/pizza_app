@@ -13,10 +13,10 @@ class HomePage extends StatelessWidget {
   final void Function() onShowCart;
 
   const HomePage({
-    Key key,
-    this.onPizzaSelect,
-    this.onShowProfile,
-    this.onShowCart,
+    Key? key,
+    required this.onPizzaSelect,
+    required this.onShowProfile,
+    required this.onShowCart,
   }) : super(key: key);
 
   @override

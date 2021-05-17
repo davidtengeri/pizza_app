@@ -8,7 +8,7 @@ import 'package:pizza_app/models/address.dart';
 const SZEGED_LATLNG = LatLng(46.2587, 20.14222);
 
 class LocationService {
-  static Future<LatLng> find(Address address, {http.Client httpClient}) async {
+  static Future<LatLng> find(Address address, {http.Client? httpClient}) async {
     var client = httpClient ?? http.Client();
     var result = SZEGED_LATLNG;
     try {
@@ -28,7 +28,8 @@ class LocationService {
     return result;
   }
 
-  static String _buildUrl(Address address) {
-    return 'https://nominatim.openstreetmap.org/search?format=json&counrty=Hungary&city=${address.city}&street=${address.houseNumber} ${address.street}';
+  static Uri _buildUrl(Address address) {
+    return Uri.parse(
+        'https://nominatim.openstreetmap.org/search?format=json&counrty=Hungary&city=${address.city}&street=${address.houseNumber} ${address.street}');
   }
 }

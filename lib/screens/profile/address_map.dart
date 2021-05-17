@@ -8,7 +8,7 @@ import 'package:pizza_app/location_service.dart';
 class AddressMap extends StatefulWidget {
   final Address address;
 
-  AddressMap({Key key, this.address}) : super(key: key);
+  AddressMap({Key? key, required this.address}) : super(key: key);
 
   @override
   _AddressMapState createState() => _AddressMapState();
@@ -24,7 +24,9 @@ class _AddressMapState extends State<AddressMap> {
       child: GoogleMap(
         mapType: MapType.normal,
         initialCameraPosition: CameraPosition(
-            target: widget.address.latLng ?? SZEGED_LATLNG, zoom: 16),
+          target: widget.address.latLng ?? SZEGED_LATLNG,
+          zoom: 16,
+        ),
         compassEnabled: false,
         myLocationButtonEnabled: false,
         scrollGesturesEnabled: false,

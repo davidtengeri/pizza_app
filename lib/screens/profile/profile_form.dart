@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 class ProfileForm extends StatefulWidget {
   final Profile profile;
 
-  ProfileForm({Key key, this.profile}) : super(key: key);
+  ProfileForm({Key? key, required this.profile}) : super(key: key);
   @override
   _ProfileFormState createState() => _ProfileFormState();
 }
@@ -16,9 +16,9 @@ class ProfileForm extends StatefulWidget {
 class _ProfileFormState extends State<ProfileForm> {
   final _formKey = GlobalKey<FormState>();
   // These controllers can be used to get the value entered into the input field
-  TextEditingController _nameController;
-  TextEditingController _emailController;
-  TextEditingController _phoneController;
+  late TextEditingController _nameController;
+  late TextEditingController _emailController;
+  late TextEditingController _phoneController;
 
   @override
   void initState() {
@@ -34,11 +34,11 @@ class _ProfileFormState extends State<ProfileForm> {
   void saveProfile(BuildContext context) async {
     var repository = context.read<ProfileRepository>();
     await repository.save(widget.profile);
-    Scaffold.of(context)
+    ScaffoldMessenger.of(context)
       ..removeCurrentSnackBar()
       ..showSnackBar(
         SnackBar(
-          content: Text(PizzaAppLocalizations.of(context).profileSaved),
+          content: Text(PizzaAppLocalizations.of(context)!.profileSaved),
         ),
       );
   }
@@ -53,7 +53,7 @@ class _ProfileFormState extends State<ProfileForm> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                PizzaAppLocalizations.of(context).profile,
+                PizzaAppLocalizations.of(context)!.profile,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -69,12 +69,12 @@ class _ProfileFormState extends State<ProfileForm> {
                       controller: _nameController,
                       decoration: InputDecoration(
                         hintText:
-                            PizzaAppLocalizations.of(context).enterYourName,
-                        labelText: PizzaAppLocalizations.of(context).name,
+                            PizzaAppLocalizations.of(context)!.enterYourName,
+                        labelText: PizzaAppLocalizations.of(context)!.name,
                       ),
                       validator: (value) {
-                        if (value.isEmpty) {
-                          return PizzaAppLocalizations.of(context)
+                        if (value != null && value.isEmpty) {
+                          return PizzaAppLocalizations.of(context)!
                               .mandatoryField;
                         }
                         return null;
@@ -84,12 +84,12 @@ class _ProfileFormState extends State<ProfileForm> {
                       controller: _emailController,
                       decoration: InputDecoration(
                         hintText:
-                            PizzaAppLocalizations.of(context).enterYourEmail,
-                        labelText: PizzaAppLocalizations.of(context).email,
+                            PizzaAppLocalizations.of(context)!.enterYourEmail,
+                        labelText: PizzaAppLocalizations.of(context)!.email,
                       ),
                       validator: (value) {
-                        if (value.isEmpty) {
-                          return PizzaAppLocalizations.of(context)
+                        if (value != null && value.isEmpty) {
+                          return PizzaAppLocalizations.of(context)!
                               .mandatoryField;
                         }
                         return null;
@@ -99,12 +99,12 @@ class _ProfileFormState extends State<ProfileForm> {
                       controller: _phoneController,
                       decoration: InputDecoration(
                         hintText:
-                            PizzaAppLocalizations.of(context).enterYourPhone,
-                        labelText: PizzaAppLocalizations.of(context).phone,
+                            PizzaAppLocalizations.of(context)!.enterYourPhone,
+                        labelText: PizzaAppLocalizations.of(context)!.phone,
                       ),
                       validator: (value) {
-                        if (value.isEmpty) {
-                          return PizzaAppLocalizations.of(context)
+                        if (value != null && value.isEmpty) {
+                          return PizzaAppLocalizations.of(context)!
                               .mandatoryField;
                         }
                         return null;
@@ -116,16 +116,14 @@ class _ProfileFormState extends State<ProfileForm> {
                         color: Colors.red,
                         textColor: Colors.white,
                         onPressed: () {
-                          if (_formKey.currentState.validate()) {
-                            widget.profile.name = _nameController?.value?.text;
-                            widget.profile.email =
-                                _emailController?.value?.text;
-                            widget.profile.phone =
-                                _phoneController?.value?.text;
+                          if (_formKey.currentState!.validate()) {
+                            widget.profile.name = _nameController.value.text;
+                            widget.profile.email = _emailController.value.text;
+                            widget.profile.phone = _phoneController.value.text;
                             saveProfile(context);
                           }
                         },
-                        child: Text(PizzaAppLocalizations.of(context).save),
+                        child: Text(PizzaAppLocalizations.of(context)!.save),
                       ),
                     )
                   ],
@@ -135,7 +133,7 @@ class _ProfileFormState extends State<ProfileForm> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                PizzaAppLocalizations.of(context).addresses,
+                PizzaAppLocalizations.of(context)!.addresses,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

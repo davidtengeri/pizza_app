@@ -6,13 +6,13 @@ class CartItem {
   final String size;
   final String crust;
   final String topping;
-  Contact whoWillEat;
+  Contact? whoWillEat;
 
   CartItem({
-    this.pizza,
-    this.size,
-    this.crust,
-    this.topping,
+    required this.pizza,
+    required this.size,
+    required this.crust,
+    required this.topping,
     this.whoWillEat,
   });
 }

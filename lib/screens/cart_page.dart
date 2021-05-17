@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 class CartPage extends StatelessWidget {
   final void Function() onShowProfile;
 
-  const CartPage({Key key, this.onShowProfile}) : super(key: key);
+  const CartPage({Key? key, required this.onShowProfile}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +22,13 @@ class CartPage extends StatelessWidget {
           color: Colors.black,
         ),
         title: Text(
-          PizzaAppLocalizations.of(context).cart,
+          PizzaAppLocalizations.of(context)!.cart,
           style: TextStyle(color: Colors.grey[900]),
         ),
         actions: [
           CartButton(
             iconColor: Colors.black,
+            onPressed: () {},
           ),
           ProfileButton(
             iconColor: Colors.black,
@@ -55,7 +56,7 @@ class CartPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      PizzaAppLocalizations.of(context).total,
+                      PizzaAppLocalizations.of(context)!.total,
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,

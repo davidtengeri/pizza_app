@@ -8,8 +8,10 @@ void main() {
     test('stores pizza', () {
       var model = Cart();
       model.add(CartItem(
-        pizza: PIZZAS[0],
-      ));
+          pizza: PIZZAS[0],
+          size: 'small',
+          topping: 'standard',
+          crust: 'standard'));
 
       expect(model.items.length, 1);
     });
@@ -17,11 +19,15 @@ void main() {
     test('counts the total value', () {
       var model = Cart();
       model.add(CartItem(
-        pizza: PIZZAS[0],
-      ));
+          pizza: PIZZAS[0],
+          size: 'small',
+          topping: 'standard',
+          crust: 'standard'));
       model.add(CartItem(
-        pizza: PIZZAS[1],
-      ));
+          pizza: PIZZAS[1],
+          size: 'small',
+          topping: 'standard',
+          crust: 'standard'));
 
       expect(model.total, 26.1);
     });

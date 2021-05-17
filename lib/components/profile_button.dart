@@ -5,9 +5,9 @@ class ProfileButton extends StatelessWidget {
   final void Function() onPressed;
 
   const ProfileButton({
-    Key key,
+    Key? key,
     this.iconColor = Colors.white,
-    this.onPressed,
+    required this.onPressed,
   }) : super(key: key);
 
   @override

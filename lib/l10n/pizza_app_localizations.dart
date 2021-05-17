@@ -11,7 +11,7 @@ class PizzaAppLocalizations {
   // Segédfüggvény, amivel a BuildContext-ből kikereshetjük a beregisztrált
   // PizzaAppLocalization példányt, amit a rendszer az épp aktuális nyelvvel
   // példányosít
-  static PizzaAppLocalizations of(BuildContext context) {
+  static PizzaAppLocalizations? of(BuildContext context) {
     return Localizations.of<PizzaAppLocalizations>(
         context, PizzaAppLocalizations);
   }
@@ -27,7 +27,9 @@ class PizzaAppLocalizations {
 
   // Az aktuális nyelv alapján adjuk vissza  az azonosítóhoz tartozó
   // lefordított szöveget.
-  String stringById(String id) => _localizedValues[locale.languageCode][id];
+  String stringById(String id) =>
+      _localizedValues[locale.languageCode]?[id] ??
+      'Missing translation: $id for locale: ${locale.languageCode}';
 
   // Az egyes azonosítókhoz metódust rendelünk
   String get addAddressDialogTitle => stringById('addAddressDialogTitle');

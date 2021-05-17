@@ -8,9 +8,9 @@ class CartButton extends StatelessWidget {
   final void Function() onPressed;
 
   const CartButton({
-    Key key,
+    Key? key,
     this.iconColor = Colors.white,
-    this.onPressed,
+    required this.onPressed,
   }) : super(key: key);
 
   @override

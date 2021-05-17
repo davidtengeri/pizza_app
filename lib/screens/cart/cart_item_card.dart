@@ -23,12 +23,12 @@ class CartItemCard extends StatelessWidget {
     } else if (await Permission.contacts.isPermanentlyDenied) {
       openAppSettings();
     } else {
-      Scaffold.of(context)
+      ScaffoldMessenger.of(context)
         ..removeCurrentSnackBar()
         ..showSnackBar(
           SnackBar(
             content:
-                Text(PizzaAppLocalizations.of(context).canNotAccessToContacts),
+                Text(PizzaAppLocalizations.of(context)!.canNotAccessToContacts),
           ),
         );
     }
@@ -39,8 +39,8 @@ class CartItemCard extends StatelessWidget {
   }
 
   const CartItemCard({
-    Key key,
-    this.item,
+    Key? key,
+    required this.item,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class CartItemCard extends StatelessWidget {
               blurRadius: 30,
             ),
             BoxShadow(
-              color: Colors.grey[900].withOpacity(0.3),
+              color: Colors.grey.shade900.withOpacity(0.3),
               spreadRadius: 2,
               offset: Offset(7, 7),
               blurRadius: 20,
@@ -105,14 +105,14 @@ class CartItemCard extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            "${PizzaAppLocalizations.of(context).size}: ",
+                            "${PizzaAppLocalizations.of(context)!.size}: ",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           if (item.size != null)
                             Text(
-                              PizzaAppLocalizations.of(context)
+                              PizzaAppLocalizations.of(context)!
                                   .stringById(item.size),
                             ),
                         ],
@@ -120,14 +120,14 @@ class CartItemCard extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            "${PizzaAppLocalizations.of(context).crust}: ",
+                            "${PizzaAppLocalizations.of(context)!.crust}: ",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           if (item.crust != null)
                             Text(
-                              PizzaAppLocalizations.of(context)
+                              PizzaAppLocalizations.of(context)!
                                   .stringById(item.crust),
                             ),
                         ],
@@ -135,14 +135,14 @@ class CartItemCard extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            "${PizzaAppLocalizations.of(context).toppings}: ",
+                            "${PizzaAppLocalizations.of(context)!.toppings}: ",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           if (item.topping != null)
                             Text(
-                              PizzaAppLocalizations.of(context)
+                              PizzaAppLocalizations.of(context)!
                                   .stringById(item.topping),
                             ),
                         ],
@@ -167,7 +167,7 @@ class CartItemCard extends StatelessWidget {
                   },
                   icon: Icon(Icons.contacts),
                   label: Text(item.whoWillEat?.displayName ??
-                      PizzaAppLocalizations.of(context).whoWillEat),
+                      PizzaAppLocalizations.of(context)!.whoWillEat),
                 ),
                 if (item.whoWillEat != null)
                   IconButton(
