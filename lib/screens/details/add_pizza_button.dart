@@ -7,9 +7,9 @@ class AddPizzaButton extends StatefulWidget {
   final int amount;
 
   const AddPizzaButton({
-    Key key,
-    this.onPressed,
-    this.amount,
+    Key? key,
+    required this.onPressed,
+    required this.amount,
   }) : super(key: key);
 
   @override
@@ -19,12 +19,12 @@ class AddPizzaButton extends StatefulWidget {
 class _AddPizzaButtonState extends State<AddPizzaButton>
     with SingleTickerProviderStateMixin {
   // Animációt vezéreljük majd a controller-en keresztül
-  AnimationController _controller;
+  late AnimationController _controller;
   // Az animáció aktuális értékét tárolja. Jellemzően ez egy 0-1 közötti szám,
   // amit átalakíthatunk arra az értékre amire nekünk szükségünk van.
   // Ez a szám az animációnak megfelelő időtartam alatt a megfelelő ütemben
   // változik
-  Animation _animation;
+  late Animation _animation;
 
   @override
   void initState() {
@@ -43,7 +43,7 @@ class _AddPizzaButtonState extends State<AddPizzaButton>
 
   Future<void> _runAnimation(BuildContext context) async {
     // Megkeressük a gombot, amivel hozzá lehet adni a pizzát a kosrához
-    final RenderBox renderBox = context.findRenderObject();
+    final RenderBox renderBox = context.findRenderObject() as RenderBox;
     // A bel fölső sarokhoz képest kiszámítjuk a pozícióját
     final widgetPosition = renderBox.localToGlobal(Offset.zero);
     // Lekérjük a szélességét
@@ -64,7 +64,7 @@ class _AddPizzaButtonState extends State<AddPizzaButton>
               (screenWidth - widgetPosition.dx - widgetWidth / 2 - 68) *
                   (_animation.value),
           top: 25 + (widgetPosition.dy - 60) * (1 - _animation.value),
-          child: child,
+          child: child!,
         ),
         // A hozzáadandó pizzák száma
         child: Material(
@@ -89,7 +89,7 @@ class _AddPizzaButtonState extends State<AddPizzaButton>
       ),
     );
     // Hozzáadjuk az elemet a többi widget fölé
-    Overlay.of(context).insert(entry);
+    Overlay.of(context)!.insert(entry);
     // Elindítjuk az animációt és megvárjuk a végét
     await _controller.forward(from: 0);
     // Ha vége az animációnak, akkor töröljük az elemet
@@ -101,7 +101,7 @@ class _AddPizzaButtonState extends State<AddPizzaButton>
   @override
   Widget build(BuildContext context) {
     return MaxWidthButton(
-      text: PizzaAppLocalizations.of(context).addToCart,
+      text: PizzaAppLocalizations.of(context)!.addToCart,
       onPressed: () {
         _runAnimation(context);
       },
