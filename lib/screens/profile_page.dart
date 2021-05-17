@@ -12,8 +12,8 @@ class ProfilePage extends StatefulWidget {
   final void Function() onShowCart;
 
   const ProfilePage({
-    Key key,
-    this.onShowCart,
+    Key? key,
+    required this.onShowCart,
   }) : super(key: key);
   @override
   _ProfilePageState createState() => _ProfilePageState();

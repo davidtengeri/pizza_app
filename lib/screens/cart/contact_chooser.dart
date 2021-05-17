@@ -7,7 +7,7 @@ class ContactChooser extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(PizzaAppLocalizations.of(context).chooseContact),
+        title: Text(PizzaAppLocalizations.of(context)!.chooseContact),
       ),
       body: Container(
         width: double.infinity,
@@ -17,14 +17,15 @@ class ContactChooser extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
                 return ListView(
-                  children: snapshot.data.map((contact) {
-                    return ListTile(
-                      title: Text(contact.displayName),
-                      onTap: () {
-                        Navigator.pop(context, contact);
-                      },
-                    );
-                  }).toList(),
+                  children: snapshot.data?.map((contact) {
+                        return ListTile(
+                          title: Text(contact.displayName ?? ''),
+                          onTap: () {
+                            Navigator.pop(context, contact);
+                          },
+                        );
+                      }).toList() ??
+                      [],
                 );
               }
               return Center(child: CircularProgressIndicator());

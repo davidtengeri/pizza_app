@@ -25,7 +25,7 @@ class LocationService {
         client.close();
       }
     }
-    return SZEGED_LATLNG;
+    return result;
   }
 
   static Uri _buildUrl(Address address) {

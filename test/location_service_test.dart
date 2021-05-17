@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:pizza_app/location_service.dart';
 import 'package:pizza_app/models/address.dart';
 
@@ -19,11 +19,15 @@ void main() {
 
       // Megmondjuk, hogy amikor az ál HTTP klienst ezekkel a paraméterekkel
       // hívjuk meg, akkor mi legyen a visszatérési érték.
-      when(client.get(
-              'https://nominatim.openstreetmap.org/search?format=json&counrty=Hungary&city=Budapest&street=12 Váci út'))
-          .thenAnswer((_) async => http.Response(
+      when(() => client.get(Uri.parse(
+              'https://nominatim.openstreetmap.org/search?format=json&counrty=Hungary&city=Budapest&street=12 Váci út')))
+          .thenAnswer(
+        (_) => Future.value(
+          http.Response(
               '[{"place_id":15976088,"licence":"Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright","osm_type":"node","osm_id":1468818748,"boundingbox":["47.5128019","47.5129019","19.057147","19.057247"],"lat":"47.5128519","lon":"19.057197","display_name":"12, Váci út, Újlipótváros, VI. kerület, Budapest, Közép-Magyarország, 1132, Magyarország","class":"place","type":"house","importance":0.42099999999999993}]',
-              200));
+              200),
+        ),
+      );
 
       // Használjuk a saját kódunkat, ahogy eddig is. Paraméterben átadjuk az
       // ál HTTP kliensünket.

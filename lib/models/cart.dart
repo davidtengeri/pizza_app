@@ -26,7 +26,7 @@ class Cart with ChangeNotifier {
   double get total =>
       _items.fold(0, (amount, item) => item.pizza.price + amount);
 
-  void setEater(CartItem item, Contact eater) {
+  void setEater(CartItem item, Contact? eater) {
     item.whoWillEat = eater;
     notifyListeners();
   }
