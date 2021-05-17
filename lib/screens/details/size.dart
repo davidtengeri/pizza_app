@@ -14,7 +14,11 @@ class Size extends StatelessWidget {
   final String size;
   final OnSizeChange onSizeChange;
 
-  Size({Key key, this.size, this.onSizeChange}) : super(key: key);
+  Size({
+    Key? key,
+    required this.size,
+    required this.onSizeChange,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,7 @@ class Size extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            PizzaAppLocalizations.of(context).size,
+            PizzaAppLocalizations.of(context)!.size,
             style: TextStyle(
               fontSize: 20,
             ),
@@ -34,7 +38,7 @@ class Size extends StatelessWidget {
             texts: options
                 .map(
                   (option) =>
-                      PizzaAppLocalizations.of(context).stringById(option),
+                      PizzaAppLocalizations.of(context)!.stringById(option),
                 )
                 .toList(),
             isSelected: [

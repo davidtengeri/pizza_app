@@ -11,7 +11,7 @@ class ProfilePicture extends StatefulWidget {
 }
 
 class _ProfilePictureState extends State<ProfilePicture> {
-  File image;
+  File? image;
 
   @override
   void initState() {
@@ -42,7 +42,6 @@ class _ProfilePictureState extends State<ProfilePicture> {
 
   @override
   Widget build(BuildContext context) {
-    print(image?.path);
     return Stack(
       children: <Widget>[
         Container(
@@ -55,7 +54,7 @@ class _ProfilePictureState extends State<ProfilePicture> {
               backgroundColor: Colors.white,
               backgroundImage: image?.existsSync() == true
                   ? Image.memory(
-                      image.readAsBytesSync(),
+                      image!.readAsBytesSync(),
                       fit: BoxFit.fill,
                     ).image
                   : null,

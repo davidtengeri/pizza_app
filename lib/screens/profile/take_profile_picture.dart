@@ -11,7 +11,10 @@ import 'package:provider/provider.dart';
 class TakeProfilePictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var camera = context.watch<CameraDescription>();
+    var camera = context.watch<CameraDescription?>();
+    if (camera == null) {
+      return CircularProgressIndicator();
+    }
     return TakeProfilePicture(camera: camera);
   }
 }
@@ -20,8 +23,8 @@ class TakeProfilePicture extends StatefulWidget {
   final CameraDescription camera;
 
   TakeProfilePicture({
-    Key key,
-    this.camera,
+    Key? key,
+    required this.camera,
   }) : super(key: key);
 
   @override
@@ -29,8 +32,8 @@ class TakeProfilePicture extends StatefulWidget {
 }
 
 class _TakeProfilePictureState extends State<TakeProfilePicture> {
-  Future<void> _initializeControllerFuture;
-  CameraManager cameraManager;
+  late Future<void> _initializeControllerFuture;
+  late CameraManager cameraManager;
 
   void initState() {
     super.initState();
@@ -51,7 +54,7 @@ class _TakeProfilePictureState extends State<TakeProfilePicture> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(PizzaAppLocalizations.of(context).takeAPicture),
+        title: Text(PizzaAppLocalizations.of(context)!.takeAPicture),
       ),
       body: FutureBuilder(
         future: _initializeControllerFuture,
@@ -83,7 +86,9 @@ class _TakeProfilePictureState extends State<TakeProfilePicture> {
               file.deleteSync();
             }
             // Készítunk egy képet
-            await cameraManager.cameraController.takePicture(path);
+            final picture = await cameraManager.cameraController.takePicture();
+            final pictureFile = File(picture.path);
+            await pictureFile.copy(file.path);
 
             // Visszaadjuk a mentett fájlt az előző képernyőnek.
             Navigator.pop(context, file);

@@ -9,10 +9,10 @@ class CartItem {
   Contact whoWillEat;
 
   CartItem({
-    this.pizza,
-    this.size,
-    this.crust,
-    this.topping,
-    this.whoWillEat,
+    required this.pizza,
+    required this.size,
+    required this.crust,
+    required this.topping,
+    required this.whoWillEat,
   });
 }

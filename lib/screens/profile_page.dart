@@ -20,8 +20,8 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  Profile _profile;
-  ProfileRepository _profileRepository;
+  Profile? _profile;
+  late ProfileRepository _profileRepository;
 
   @override
   void initState() {
@@ -47,7 +47,7 @@ class _ProfilePageState extends State<ProfilePage> {
             color: Colors.black,
           ),
           title: Text(
-            PizzaAppLocalizations.of(context).profile,
+            PizzaAppLocalizations.of(context)!.profile,
             style: TextStyle(color: Colors.grey[900]),
           ),
           actions: [
@@ -68,7 +68,7 @@ class _ProfilePageState extends State<ProfilePage> {
               if (_profile != null)
                 Expanded(
                   child: ProfileForm(
-                    profile: _profile,
+                    profile: _profile!,
                   ),
                 ),
             ],
