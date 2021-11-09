@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_app/db/profile_repository.dart';
+import 'package:pizza_app/hive/address.dart';
+import 'package:pizza_app/hive/profile_repository.dart';
 import 'package:pizza_app/l10n/pizza_app_localizations.dart';
-import 'package:pizza_app/models/address.dart';
 import 'package:pizza_app/screens/profile/address_form_dialog.dart';
 import 'package:provider/provider.dart';
 
@@ -15,19 +15,19 @@ class AddAddressButton extends StatelessWidget {
   }) : super(key: key);
 
   Future<void> _addAddress(BuildContext context) async {
+    final profileRepository = context.read<ProfileRepository>();
+    final profile = profileRepository.profile;
     var address = await showDialog<Address>(
       context: context,
       builder: (BuildContext context) => AddressFormDialog(),
     );
     if (address != null) {
-      // Get the repository through Provider
-      var repository = context.read<ProfileRepository>();
-      // Save the address into the DB
-      await repository.addAddress(address);
+      profile.addresses.add(address);
+      profileRepository.update(profile);
       // Call the callback
       await onAddressSaved();
       // Show info to the user
-      Scaffold.of(context)
+      ScaffoldMessenger.of(context)
         ..removeCurrentSnackBar()
         ..showSnackBar(
           SnackBar(
