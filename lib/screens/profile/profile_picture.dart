@@ -73,13 +73,15 @@ class _ProfilePictureState extends State<ProfilePicture> {
               color: Colors.black,
             ),
             onTap: () async {
-              File newImage = await Navigator.push(
+              File? newImage = await Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => TakeProfilePictureScreen(),
                 ),
               );
-              setImage(newImage);
+              if (newImage != null) {
+                setImage(newImage);
+              }
             },
           ),
           right: 0,
