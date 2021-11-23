@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_app/db/profile_repository.dart';
+import 'package:pizza_app/hive/profile.dart';
+import 'package:pizza_app/hive/profile_repository.dart';
 import 'package:pizza_app/l10n/pizza_app_localizations.dart';
-import 'package:pizza_app/models/profile.dart';
 import 'package:pizza_app/screens/profile/address_card.dart';
 import 'package:provider/provider.dart';
 
@@ -31,9 +31,14 @@ class _ProfileFormState extends State<ProfileForm> {
         TextEditingValue(text: widget.profile.phone ?? ''));
   }
 
-  void saveProfile(BuildContext context) async {
-    var repository = context.read<ProfileRepository>();
-    await repository.save(widget.profile);
+  void saveProfile() {
+    final profileRepository = context.read<ProfileRepository>();
+    final profile = profileRepository.profile;
+    profile.name = _nameController.text;
+    profile.email = _emailController.text;
+    profile.phone = _phoneController.text;
+    profileRepository.update(profile);
+
     ScaffoldMessenger.of(context)
       ..removeCurrentSnackBar()
       ..showSnackBar(
@@ -117,10 +122,7 @@ class _ProfileFormState extends State<ProfileForm> {
                         textColor: Colors.white,
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            widget.profile.name = _nameController.value.text;
-                            widget.profile.email = _emailController.value.text;
-                            widget.profile.phone = _phoneController.value.text;
-                            saveProfile(context);
+                            saveProfile();
                           }
                         },
                         child: Text(PizzaAppLocalizations.of(context)!.save),

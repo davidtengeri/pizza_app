@@ -2,8 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:pizza_app/models/address.dart';
-import 'package:pizza_app/location_service.dart';
+import 'package:pizza_app/hive/address.dart';
 
 class AddressMap extends StatefulWidget {
   final Address address;
@@ -24,7 +23,7 @@ class _AddressMapState extends State<AddressMap> {
       child: GoogleMap(
         mapType: MapType.normal,
         initialCameraPosition: CameraPosition(
-          target: widget.address.latLng ?? SZEGED_LATLNG,
+          target: widget.address.latLng,
           zoom: 16,
         ),
         compassEnabled: false,
@@ -38,7 +37,7 @@ class _AddressMapState extends State<AddressMap> {
         markers: [
           Marker(
             markerId: MarkerId(widget.address.id.toString()),
-            position: widget.address.latLng ?? SZEGED_LATLNG,
+            position: widget.address.latLng,
             draggable: false,
           ),
         ].toSet(),
