@@ -23,8 +23,6 @@ class AddAddressButton extends StatelessWidget {
       builder: (BuildContext context) => AddressFormDialog(),
     );
     if (address != null) {
-      // Get the repository through Provider
-      var repository = context.read<ProfileRepository>();
       // Get the latitude and longitude values for that address
       address.latLng = await LocationService.find(address);
 
