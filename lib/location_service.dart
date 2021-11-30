@@ -3,7 +3,8 @@ import 'dart:io';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
-import 'package:pizza_app/models/address.dart';
+
+import 'hive/address.dart';
 
 const SZEGED_LATLNG = LatLng(46.2587, 20.14222);
 

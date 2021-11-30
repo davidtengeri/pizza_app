@@ -1,8 +1,10 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:pizza_app/db/profile_repository.dart';
-import 'package:pizza_app/db/sql.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:pizza_app/hive/address.dart';
+import 'package:pizza_app/hive/profile.dart';
+import 'package:pizza_app/hive/profile_repository.dart';
 import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/models/favourites.dart';
 import 'package:pizza_app/navigation/pizza_route_information_parser.dart';
@@ -19,18 +21,19 @@ Future<void> main(List<String> args) async {
   // Kivesszük a legelső kamerát a listából
   final camera = cameras.length > 0 ? cameras.first : null;
 
-  final sql = Sql();
+  await Hive.initFlutter();
+  Hive.registerAdapter<Address>(AddressAdapter());
+  Hive.registerAdapter<Profile>(ProfileAdapter());
+  await Hive.openBox<Profile>('profile');
   runApp(
     MultiProvider(
       providers: [
+        Provider(create: (_) => ProfileRepository()),
         ChangeNotifierProvider(
           create: (_) => Cart(),
         ),
         ChangeNotifierProvider(
           create: (_) => Favourites(),
-        ),
-        Provider(
-          create: (_) => ProfileRepository(sql: sql),
         ),
         // A kamera a Provider-en keresztül lesz elérhető.
         Provider.value(value: camera),

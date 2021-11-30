@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_app/components/cart_button.dart';
-import 'package:pizza_app/db/profile_repository.dart';
+import 'package:pizza_app/hive/profile.dart';
+import 'package:pizza_app/hive/profile_repository.dart';
 import 'package:pizza_app/l10n/pizza_app_localizations.dart';
-import 'package:pizza_app/models/profile.dart';
 import 'package:pizza_app/screens/profile/add_address_button.dart';
 import 'package:pizza_app/screens/profile/profile_form.dart';
 import 'package:pizza_app/screens/profile/profile_picture.dart';
@@ -21,19 +21,17 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   Profile? _profile;
-  late ProfileRepository _profileRepository;
 
   @override
   void initState() {
     super.initState();
-    _profileRepository = context.read<ProfileRepository>();
     _loadProfile();
   }
 
   Future<void> _loadProfile() async {
-    var loadedProfile = await _profileRepository.load();
+    final profileRepository = context.read<ProfileRepository>();
     setState(() {
-      _profile = loadedProfile;
+      _profile = profileRepository.profile;
     });
   }
 
