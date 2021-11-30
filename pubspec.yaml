@@ -34,7 +34,7 @@ dependencies:
   camera: ^0.9.4+5
   path_provider: ^2.0.1
   permission_handler: ^7.1.0
-  contacts_service: ^0.6.1
+  contacts_service: ^0.6.3
   hive: ^2.0.4
   hive_flutter: ^1.1.0
 
