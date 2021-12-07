@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
+import 'package:pizza_app/hive/address.dart';
 import 'package:pizza_app/location_service.dart';
-import 'package:pizza_app/models/address.dart';
 
 // Definiálunk egy ál HTTP klienst a mockito csomag segítségével.
 class MockClient extends Mock implements http.Client {}

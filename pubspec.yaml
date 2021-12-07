@@ -31,10 +31,13 @@ dependencies:
   sqflite: ^2.0.0+3
   google_maps_flutter: ^2.0.3
   http: ^0.13.2
-  camera: ^0.8.1
+  camera: ^0.9.4+5
   path_provider: ^2.0.1
   permission_handler: ^7.1.0
-  contacts_service: ^0.6.1
+  contacts_service: ^0.6.3
+  hive: ^2.0.4
+  hive_flutter: ^1.1.0
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -45,6 +48,8 @@ dev_dependencies:
     sdk: flutter
   mocktail: ^0.1.2
   matcher: ^0.12.10
+  hive_generator: ^1.1.1
+  build_runner: ^2.1.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
