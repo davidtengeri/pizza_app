@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pizza_app/components/rating.dart';
 import 'package:pizza_app/screens/pizza_details.dart';
 
@@ -86,11 +87,8 @@ class PizzaCard extends StatelessWidget {
           ),
           RaisedButton(
             onPressed: () {
-              Navigator.pushNamed(
-                context,
-                '/details',
-                arguments: pizza,
-              );
+              final index = PIZZAS.indexOf(pizza!);
+              context.go('/order/$index');
             },
             child: Text(
               'Add to cart',

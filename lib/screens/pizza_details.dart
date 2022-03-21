@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pizza_app/components/amount_selector.dart';
 import 'package:pizza_app/components/max_width_button.dart';
 import 'package:pizza_app/screens/details/crust.dart';
@@ -15,11 +16,13 @@ import 'package:pizza_app/components/rating.dart';
 class PizzaDetails extends StatelessWidget {
   const PizzaDetails({
     Key? key,
+    required this.pizza,
   }) : super(key: key);
+
+  final Pizza pizza;
 
   @override
   Widget build(BuildContext context) {
-    final Pizza pizza = ModalRoute.of(context)!.settings.arguments as Pizza;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -29,6 +32,11 @@ class PizzaDetails extends StatelessWidget {
         title: Text(
           'Details',
           style: TextStyle(color: Colors.grey[900]),
+        ),
+        leading: BackButton(
+          onPressed: () {
+            context.go('/');
+          },
         ),
       ),
       body: Container(
@@ -89,7 +97,7 @@ class PizzaDetails extends StatelessWidget {
             MaxWidthButton(
               text: 'Add to cart',
               onPressed: () {
-                Navigator.pop(context);
+                context.go('/');
               },
             ),
           ],
