@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_app/components/favourite_button.dart';
 import 'package:pizza_app/components/rating.dart';
-import 'package:pizza_app/l10n/pizza_app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/models/pizza.dart';
 import 'package:pizza_app/screens/home_page.dart';
 
@@ -108,7 +108,7 @@ class PizzaCard extends StatelessWidget {
               onPizzaSelect!(pizza);
             },
             child: Text(
-              PizzaAppLocalizations.of(context)!.addToCart,
+              PizzaAppLocalizations.of(context).addToCart,
             ),
             color: Colors.red,
             textColor: Colors.white,

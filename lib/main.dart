@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/pizza_app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/models/favourites.dart';
 import 'package:pizza_app/navigation/pizza_route_information_parser.dart';
 import 'package:pizza_app/navigation/pizza_router_delegate.dart';

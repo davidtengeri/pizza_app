@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/components/text_toggle_buttons.dart';
-import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 
 typedef OnCrustSelect = void Function(String crust);
 
@@ -28,19 +28,18 @@ class Crust extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            PizzaAppLocalizations.of(context)!.crust,
+            PizzaAppLocalizations.of(context).crust,
             style: TextStyle(
               fontSize: 20,
             ),
             textAlign: TextAlign.left,
           ),
           TextToggleButtons(
-            texts: options
-                .map(
-                  (option) =>
-                      PizzaAppLocalizations.of(context)!.stringById(option),
-                )
-                .toList(),
+            texts: [
+              PizzaAppLocalizations.of(context).standard,
+              PizzaAppLocalizations.of(context).garlicRoasted,
+              PizzaAppLocalizations.of(context).cheeseBurst,
+            ],
             isSelected: [
               crust == options[0],
               crust == options[1],

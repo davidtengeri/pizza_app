@@ -1,6 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:pizza_app/l10n/pizza_app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/pizza_app_localizations.dart';
 
 class Total extends StatelessWidget {
   final double? totalPrice;
@@ -32,7 +32,7 @@ class Total extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  PizzaAppLocalizations.of(context)!.total,
+                  PizzaAppLocalizations.of(context).total,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,

@@ -1,10 +1,8 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:pizza_app/components/amount_selector.dart';
 import 'package:pizza_app/components/cart_button.dart';
 import 'package:pizza_app/components/max_width_button.dart';
-import 'package:pizza_app/l10n/pizza_app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/models/cart.dart';
 import 'package:pizza_app/models/cart_item.dart';
 import 'package:pizza_app/screens/details/crust.dart';
@@ -87,7 +85,7 @@ class _PizzaDetailsState extends State<PizzaDetails> {
           color: Colors.black,
         ),
         title: Text(
-          PizzaAppLocalizations.of(context)!.details,
+          PizzaAppLocalizations.of(context).details,
           style: TextStyle(color: Colors.grey[900]),
         ),
         actions: [
@@ -163,7 +161,7 @@ class _PizzaDetailsState extends State<PizzaDetails> {
               totalPrice: widget.pizza.price,
             ),
             MaxWidthButton(
-              text: PizzaAppLocalizations.of(context)!.addToCart,
+              text: PizzaAppLocalizations.of(context).addToCart,
               onPressed: () {
                 _addPizzaToCart();
               },
