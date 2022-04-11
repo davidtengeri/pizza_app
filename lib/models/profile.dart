@@ -1,11 +1,18 @@
+import 'package:floor/floor.dart';
 import 'package:pizza_app/models/address.dart';
 
+@Entity(tableName: 'profile')
 class Profile {
+  @primaryKey
   int? id;
   String? name;
   String? phone;
   String? email;
+
+  @ignore
   List<Address> addresses = [];
+
+  Profile([this.id, this.name, this.phone, this.email]);
 
   void addAddress(Address address) {
     addresses.add(address);
@@ -13,18 +20,5 @@ class Profile {
 
   void removeAddress(Address address) {
     addresses.remove(address);
-  }
-
-  Map<String, dynamic> toMap() {
-    Map<String, dynamic> map = <String, dynamic>{
-      'name': name,
-      'email': email,
-      'phone': phone,
-    };
-
-    if (id != null) {
-      map['id'] = id;
-    }
-    return map;
   }
 }

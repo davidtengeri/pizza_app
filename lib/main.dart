@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:pizza_app/db/app_database.dart';
 import 'package:pizza_app/db/profile_repository.dart';
-import 'package:pizza_app/db/sql.dart';
 import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/models/favourites.dart';
 import 'package:pizza_app/navigation/pizza_route_information_parser.dart';
@@ -9,8 +9,10 @@ import 'package:pizza_app/navigation/pizza_router_delegate.dart';
 import 'package:provider/provider.dart';
 import 'package:pizza_app/models/cart.dart';
 
-void main(List<String> args) {
-  final sql = Sql();
+Future<void> main(List<String> args) async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final database =
+      await $FloorAppDatabase.databaseBuilder('floor_pizza_app.db').build();
   runApp(
     MultiProvider(
       providers: [
@@ -21,7 +23,9 @@ void main(List<String> args) {
           create: (_) => Favourites(),
         ),
         Provider(
-          create: (_) => ProfileRepository(sql: sql),
+          create: (_) => ProfileRepository(
+            database: database,
+          ),
         ),
       ],
       child: App(),

@@ -1,6 +1,9 @@
+import 'package:floor/floor.dart';
 import 'package:quiver/core.dart';
 
+@entity
 class Address {
+  @primaryKey
   int? id;
   String city;
   String street;
@@ -22,16 +25,4 @@ class Address {
 
   @override
   int get hashCode => hash3(city, street, houseNumber);
-
-  Map<String, dynamic> toMap() {
-    Map<String, dynamic> map = <String, dynamic>{
-      'city': city,
-      'street': street,
-      'houseNumber': houseNumber,
-    };
-    if (id != null) {
-      map['id'] = id!;
-    }
-    return map;
-  }
 }

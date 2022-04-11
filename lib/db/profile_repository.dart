@@ -1,87 +1,29 @@
-import 'package:pizza_app/db/sql.dart';
+import 'package:pizza_app/db/app_database.dart';
 import 'package:pizza_app/models/address.dart';
 import 'package:pizza_app/models/profile.dart';
-import 'package:sqflite/sqlite_api.dart';
 
 class ProfileRepository {
-  final Sql sql;
+  final AppDatabase database;
 
-  ProfileRepository({required this.sql});
+  ProfileRepository({
+    required this.database,
+  });
 
   Future<Profile> load() async {
-    Profile profile = Profile();
-
-    // Referencia az adatbázisunkra
-    final Database database = await sql.database;
-
-    // Egy elem betöltése a profile táblából
-    List<Map<String, dynamic>> result =
-        await database.query('profile', limit: 1);
-
-    if (result.length > 0) {
-      // Volt találat, betöltjük az adatokat
-      var data = result.first;
-      profile.id = data['id'];
-      profile.name = data['name'];
-      profile.phone = data['phone'];
-      profile.email = data['email'];
-
-      profile.addresses.addAll(await loadAllAddresses(sql));
-    }
+    Profile? profile = await database.profileDao.load() ?? Profile();
+    profile.addresses.addAll(await database.addressDao.loadAllAdresses());
     return profile;
   }
 
-  Future<List<Address>> loadAllAddresses(Sql sql) async {
-    final Database database = await sql.database;
-    // Az összes cím betöltése az adresses táblából
-    final List<Map<String, dynamic>> result = await database.query(
-      'addresses',
-      orderBy: 'id DESC',
-    );
-
-    // Átalakítjuk az adatot Address objektumokká
-    return List.generate(result.length, (i) {
-      return Address(
-        id: result[i]['id'],
-        city: result[i]['city'],
-        street: result[i]['street'],
-        houseNumber: result[i]['houseNumber'],
-      );
-    });
-  }
-
   Future<void> save(Profile profile) async {
-    final Database database = await sql.database;
-    // Profil mentése az adazbázisba. Ha már létezett, akkor felülírjuk
-    profile.id = await database.insert('profile', profile.toMap(),
-        conflictAlgorithm: ConflictAlgorithm.replace);
+    profile.id = await database.profileDao.save(profile);
+    await database.addressDao
+        .deleteAll(await database.addressDao.loadAllAdresses());
 
-    removeAllAddresses();
-    profile.addresses.forEach((address) {
-      addAddress(address);
-    });
+    await database.addressDao.addAddresses(profile.addresses);
   }
 
   Future<void> addAddress(Address address) async {
-    final Database database = await sql.database;
-    address.id = await database.insert(
-      'addresses',
-      address.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
-  }
-
-  Future<void> removeAllAddresses() async {
-    final Database database = await sql.database;
-    database.delete('addresses');
-  }
-
-  Future<void> removeAddress(Address address) async {
-    final Database database = await sql.database;
-    database.delete(
-      'addresses',
-      where: 'id = ?',
-      whereArgs: [address.id],
-    );
+    address.id = await database.addressDao.addAddress(address);
   }
 }
