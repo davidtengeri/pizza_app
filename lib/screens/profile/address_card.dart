@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_app/hive/address.dart';
 import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 
 class AddressCard extends StatelessWidget {
-  final Address address;
+  // final Address address;
 
   AddressCard({
     Key? key,
-    required this.address,
+    // required this.address,
   }) : super(key: key);
 
   @override
@@ -20,19 +19,19 @@ class AddressCard extends StatelessWidget {
             Row(
               children: <Widget>[
                 Text('${PizzaAppLocalizations.of(context)!.city}: '),
-                Text(address.city),
+                // Text(address.city),
               ],
             ),
             Row(
               children: <Widget>[
                 Text('${PizzaAppLocalizations.of(context)!.street}: '),
-                Text(address.street),
+                // Text(address.street),
               ],
             ),
             Row(
               children: <Widget>[
                 Text('${PizzaAppLocalizations.of(context)!.houseNumber}: '),
-                Text(address.houseNumber),
+                // Text(address.houseNumber),
               ],
             ),
           ],

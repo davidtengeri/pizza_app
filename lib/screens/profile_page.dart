@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_app/components/cart_button.dart';
-import 'package:pizza_app/hive/profile.dart';
-import 'package:pizza_app/hive/profile_repository.dart';
 import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/screens/profile/add_address_button.dart';
 import 'package:pizza_app/screens/profile/profile_form.dart';
@@ -13,7 +11,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  Profile? _profile;
+  // Profile? _profile;
 
   @override
   void initState() {
@@ -22,10 +20,10 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> _loadProfile() async {
-    final profileRepository = context.read<ProfileRepository>();
-    setState(() {
-      _profile = profileRepository.profile;
-    });
+    // final profileRepository = context.read<ProfileRepository>();
+    // setState(() {
+    //   _profile = profileRepository.profile;
+    // });
   }
 
   @override
@@ -58,12 +56,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 Icons.account_circle_outlined,
                 size: 150,
               ),
-              if (_profile != null)
-                Expanded(
-                  child: ProfileForm(
-                    profile: _profile!,
-                  ),
-                ),
+              // if (_profile != null)
+              //   Expanded(
+              //     child: ProfileForm(
+              //       profile: _profile!,
+              //     ),
+              //   ),
             ],
           ),
         ),

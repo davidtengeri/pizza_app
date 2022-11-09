@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:pizza_app/hive/address.dart';
-import 'package:pizza_app/hive/profile.dart';
-import 'package:pizza_app/hive/profile_repository.dart';
 import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/models/favourites.dart';
 import 'package:pizza_app/navigation/pizza_route_information_parser.dart';
@@ -12,14 +8,9 @@ import 'package:provider/provider.dart';
 import 'package:pizza_app/models/cart.dart';
 
 Future<void> main(List<String> args) async {
-  await Hive.initFlutter();
-  Hive.registerAdapter<Address>(AddressAdapter());
-  Hive.registerAdapter<Profile>(ProfileAdapter());
-  await Hive.openBox<Profile>('profile');
   runApp(
     MultiProvider(
       providers: [
-        Provider(create: (_) => ProfileRepository()),
         ChangeNotifierProvider(
           create: (_) => Cart(),
         ),

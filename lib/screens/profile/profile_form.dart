@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_app/hive/profile.dart';
-import 'package:pizza_app/hive/profile_repository.dart';
 import 'package:pizza_app/l10n/pizza_app_localizations.dart';
 import 'package:pizza_app/screens/profile/address_card.dart';
 import 'package:provider/provider.dart';
 
 class ProfileForm extends StatefulWidget {
-  final Profile profile;
+  // final Profile profile;
 
-  ProfileForm({Key? key, required this.profile}) : super(key: key);
+  ProfileForm({
+    Key? key,
+    // required this.profile,
+  }) : super(key: key);
   @override
   _ProfileFormState createState() => _ProfileFormState();
 }
@@ -24,20 +25,20 @@ class _ProfileFormState extends State<ProfileForm> {
   void initState() {
     super.initState();
     _nameController = TextEditingController.fromValue(
-        TextEditingValue(text: widget.profile.name ?? ''));
+        TextEditingValue(text: /*widget.profile.name ??*/ ''));
     _emailController = TextEditingController.fromValue(
-        TextEditingValue(text: widget.profile.email ?? ''));
+        TextEditingValue(text: /*widget.profile.email ??*/ ''));
     _phoneController = TextEditingController.fromValue(
-        TextEditingValue(text: widget.profile.phone ?? ''));
+        TextEditingValue(text: /*widget.profile.phone ??*/ ''));
   }
 
   void saveProfile() {
-    final profileRepository = context.read<ProfileRepository>();
-    final profile = profileRepository.profile;
-    profile.name = _nameController.text;
-    profile.email = _emailController.text;
-    profile.phone = _phoneController.text;
-    profileRepository.update(profile);
+    // final profileRepository = context.read<ProfileRepository>();
+    // final profile = profileRepository.profile;
+    // profile.name = _nameController.text;
+    // profile.email = _emailController.text;
+    // profile.phone = _phoneController.text;
+    // profileRepository.update(profile);
 
     ScaffoldMessenger.of(context)
       ..removeCurrentSnackBar()
@@ -142,10 +143,10 @@ class _ProfileFormState extends State<ProfileForm> {
                 ),
               ),
             ),
-            if (widget.profile.addresses.length > 0)
-              ...widget.profile.addresses
-                  .map((address) => AddressCard(address: address))
-                  .toList()
+            // if (widget.profile.addresses.length > 0)
+            //   ...widget.profile.addresses
+            //       .map((address) => AddressCard(address: address))
+            //       .toList()
           ],
         ),
       ),
