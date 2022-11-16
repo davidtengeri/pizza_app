@@ -1,5 +1,5 @@
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hive/hive.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:pizza_app/location_service.dart';
 
 part 'address.g.dart';
@@ -33,7 +33,7 @@ class Address extends HiveObject {
 
   LatLng get latLng {
     if (latitude == null || longitude == null) {
-      return SZEGED_LATLNG;
+      return LatLng(szegedLat, szegedLng);
     }
     return LatLng(latitude!, longitude!);
   }

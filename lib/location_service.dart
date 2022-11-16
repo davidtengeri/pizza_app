@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:latlong2/latlong.dart';
 
 import 'hive/address.dart';
 
-const SZEGED_LATLNG = LatLng(46.2587, 20.14222);
+const szegedLat = 46.2587;
+const szegedLng = 20.14222;
 
 class LocationService {
   static Future<LatLng> find(Address address) async {
@@ -18,7 +19,7 @@ class LocationService {
             double.parse(data[0]['lat']), double.parse(data[0]['lon']));
       }
     }
-    return SZEGED_LATLNG;
+    return LatLng(szegedLat, szegedLng);
   }
 
   static Uri _buildUrl(Address address) {
